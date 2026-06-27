@@ -1,6 +1,14 @@
-@tailwind base;
-@tailwind components;
-@tailwind utilities;
+@import "tailwindcss";
+
+@theme {
+  --font-display: Inter, sans-serif;
+  --font-headline-lg: Inter, sans-serif;
+  --font-headline-md: Inter, sans-serif;
+  --font-body-lg: Inter, sans-serif;
+  --font-body-md: Inter, sans-serif;
+  --font-label-md: Inter, sans-serif;
+  --font-label-sm: Inter, sans-serif;
+}
 
 @layer base {
   body {
