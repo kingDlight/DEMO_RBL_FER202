@@ -1,0 +1,239 @@
+{
+  "songs": [
+    {
+      "id": "1",
+      "title": "Midnight City",
+      "artistId": "1",
+      "artist": "M83",
+      "albumId": "1",
+      "album": "Hurry Up, We're Dreaming",
+      "duration": "4:03",
+      "cover": "https://placehold.co/300x300/1e1b4b/white?text=Midnight+City",
+      "genre": "Pop",
+      "trending": true
+    },
+    {
+      "id": "2",
+      "title": "Starboy",
+      "artistId": "2",
+      "artist": "The Weeknd",
+      "albumId": "2",
+      "album": "Starboy",
+      "duration": "3:50",
+      "cover": "https://placehold.co/300x300/4c1d95/white?text=Starboy",
+      "genre": "Pop",
+      "trending": true
+    },
+    {
+      "id": "3",
+      "title": "Save Your Tears",
+      "artistId": "2",
+      "artist": "The Weeknd",
+      "albumId": "3",
+      "album": "After Hours",
+      "duration": "3:35",
+      "cover": "https://placehold.co/300x300/4c1d95/white?text=After+Hours",
+      "genre": "Pop",
+      "trending": false
+    },
+    {
+      "id": "4",
+      "title": "Blinding Lights",
+      "artistId": "2",
+      "artist": "The Weeknd",
+      "albumId": "3",
+      "album": "After Hours",
+      "duration": "3:20",
+      "cover": "https://placehold.co/300x300/4c1d95/white?text=After+Hours",
+      "genre": "Pop",
+      "trending": true
+    },
+    {
+      "id": "5",
+      "title": "Levitating",
+      "artistId": "3",
+      "artist": "Dua Lipa",
+      "albumId": "4",
+      "album": "Future Nostalgia",
+      "duration": "3:23",
+      "cover": "https://placehold.co/300x300/ec4899/white?text=Future+Nostalgia",
+      "genre": "Pop",
+      "trending": true
+    },
+    {
+      "id": "6",
+      "title": "Don't Start Now",
+      "artistId": "3",
+      "artist": "Dua Lipa",
+      "albumId": "4",
+      "album": "Future Nostalgia",
+      "duration": "3:03",
+      "cover": "https://placehold.co/300x300/ec4899/white?text=Future+Nostalgia",
+      "genre": "Pop",
+      "trending": false
+    },
+    {
+      "id": "7",
+      "title": "Shape of You",
+      "artistId": "4",
+      "artist": "Ed Sheeran",
+      "albumId": "5",
+      "album": "Divide",
+      "duration": "3:53",
+      "cover": "https://placehold.co/300x300/0ea5e9/white?text=Divide",
+      "genre": "Pop",
+      "trending": false
+    },
+    {
+      "id": "8",
+      "title": "Perfect",
+      "artistId": "4",
+      "artist": "Ed Sheeran",
+      "albumId": "5",
+      "album": "Divide",
+      "duration": "4:23",
+      "cover": "https://placehold.co/300x300/0ea5e9/white?text=Divide",
+      "genre": "Pop",
+      "trending": false
+    }
+  ],
+  "artists": [
+    {
+      "id": "1",
+      "name": "M83",
+      "genre": "Pop",
+      "monthlyListeners": "12,000,000",
+      "avatar": "https://placehold.co/300x300/1e1b4b/white?text=M83",
+      "verified": true,
+      "followers": "5M"
+    },
+    {
+      "id": "2",
+      "name": "The Weeknd",
+      "genre": "Pop",
+      "monthlyListeners": "105,000,000",
+      "avatar": "https://placehold.co/300x300/4c1d95/white?text=Weeknd",
+      "verified": true,
+      "followers": "70M"
+    },
+    {
+      "id": "3",
+      "name": "Dua Lipa",
+      "genre": "Pop",
+      "monthlyListeners": "75,000,000",
+      "avatar": "https://placehold.co/300x300/ec4899/white?text=Dua+Lipa",
+      "verified": true,
+      "followers": "40M"
+    },
+    {
+      "id": "4",
+      "name": "Ed Sheeran",
+      "genre": "Pop",
+      "monthlyListeners": "80,000,000",
+      "avatar": "https://placehold.co/300x300/0ea5e9/white?text=Ed",
+      "verified": true,
+      "followers": "110M"
+    }
+  ],
+  "albums": [
+    {
+      "id": "1",
+      "title": "Hurry Up, We're Dreaming",
+      "artistId": "1",
+      "artist": "M83",
+      "releaseYear": "2011",
+      "cover": "https://placehold.co/300x300/1e1b4b/white?text=Midnight+City"
+    },
+    {
+      "id": "2",
+      "title": "Starboy",
+      "artistId": "2",
+      "artist": "The Weeknd",
+      "releaseYear": "2016",
+      "cover": "https://placehold.co/300x300/4c1d95/white?text=Starboy"
+    },
+    {
+      "id": "3",
+      "title": "After Hours",
+      "artistId": "2",
+      "artist": "The Weeknd",
+      "releaseYear": "2020",
+      "cover": "https://placehold.co/300x300/4c1d95/white?text=After+Hours"
+    },
+    {
+      "id": "4",
+      "title": "Future Nostalgia",
+      "artistId": "3",
+      "artist": "Dua Lipa",
+      "releaseYear": "2020",
+      "cover": "https://placehold.co/300x300/ec4899/white?text=Future+Nostalgia"
+    },
+    {
+      "id": "5",
+      "title": "Divide",
+      "artistId": "4",
+      "artist": "Ed Sheeran",
+      "releaseYear": "2017",
+      "cover": "https://placehold.co/300x300/0ea5e9/white?text=Divide"
+    }
+  ],
+  "playlists": [
+    {
+      "id": "1",
+      "title": "Top Hits 2023",
+      "description": "The biggest songs right now.",
+      "cover": "https://placehold.co/300x300/8b5cf6/white?text=Top+Hits",
+      "songCount": 50
+    },
+    {
+      "id": "2",
+      "title": "Chill Vibes",
+      "description": "Relax and unwind.",
+      "cover": "https://placehold.co/300x300/3b82f6/white?text=Chill",
+      "songCount": 35
+    }
+  ],
+  "genres": [
+    {
+      "id": "1",
+      "name": "Pop",
+      "color": "bg-pink-500",
+      "image": "https://placehold.co/300x300/ec4899/white?text=Pop"
+    },
+    {
+      "id": "2",
+      "name": "Rock",
+      "color": "bg-red-500",
+      "image": "https://placehold.co/300x300/ef4444/white?text=Rock"
+    },
+    {
+      "id": "3",
+      "name": "Hip-Hop",
+      "color": "bg-yellow-500",
+      "image": "https://placehold.co/300x300/eab308/white?text=Hip-Hop"
+    },
+    {
+      "id": "4",
+      "name": "EDM",
+      "color": "bg-blue-500",
+      "image": "https://placehold.co/300x300/3b82f6/white?text=EDM"
+    },
+    {
+      "id": "5",
+      "name": "Jazz",
+      "color": "bg-orange-500",
+      "image": "https://placehold.co/300x300/f97316/white?text=Jazz"
+    }
+  ],
+  "users": [
+    {
+      "id": "1",
+      "username": "admin",
+      "password": "password123",
+      "name": "Auralis User",
+      "avatar": "https://placehold.co/100x100/7c3aed/white?text=U"
+    }
+  ],
+  "favorites": [],
+  "recentlyPlayed": []
+}
