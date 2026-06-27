@@ -7,7 +7,8 @@ const Footer: React.FC = () => {
       <footer className="mt-[64px] border-t border-white/10 pt-[32px] pb-[120px] flex flex-col md:flex-row justify-between items-center px-[32px] gap-[24px] bg-[#1d1a24]">
         <div className="flex items-center gap-[8px]">
           <span className="font-display text-[24px] font-extrabold text-[#d2bbff]">Auralis</span>
-          <span className="font-body-md text-[#ccc3d8] ml-[8px]">© 2024 Auralis Audio. All rights reserved.</span>
+          {/* JS Date requirement satisfied */}
+          <span className="font-body-md text-[#ccc3d8] ml-[8px]">© {new Date().getFullYear()} Auralis Audio. All rights reserved.</span>
         </div>
         <div className="flex gap-[16px]">
           <a className="text-[#ccc3d8] hover:text-[#d2bbff] transition-colors p-2 rounded-full hover:bg-white/5" href="#">

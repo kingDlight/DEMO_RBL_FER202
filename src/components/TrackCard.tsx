@@ -1,6 +1,6 @@
 import React from 'react';
 
-const MusicCard: React.FC = () => {
+const TrackCard: React.FC = () => {
   // Dữ liệu hardcode trực tiếp trong component (không dùng props theo đúng TODO Tuần 2)
   const musicData = {
     title: "Late Night Vibes",
@@ -55,4 +55,4 @@ const MusicCard: React.FC = () => {
   );
 };
 
-export default MusicCard;
+export default TrackCard;

@@ -2,7 +2,7 @@ import React from 'react';
 import Header from './components/Header';
 import Banner from './components/Banner';
 import CategoryList from './components/CategoryList';
-import MusicGrid from './components/MusicGrid';
+import TrackGrid from './components/TrackGrid';
 import Footer from './components/Footer';
 
 // Tích hợp toàn bộ component cho Tuần 2 theo đúng thứ tự
@@ -20,7 +20,7 @@ const App: React.FC = () => {
         <CategoryList />
         
         {/* 4. Grid hiển thị nhạc */}
-        <MusicGrid />
+        <TrackGrid />
       </main>
       
       {/* 5. Footer & Player Bar */}
