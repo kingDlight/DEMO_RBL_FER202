@@ -7,7 +7,7 @@ const Banner: React.FC = () => {
         {/* Dùng biểu thức JS trong JSX: style={{ background: '...' }} theo đúng yêu cầu */}
         <div 
           className="w-full h-full opacity-60" 
-          style={{ background: "url('https://lh3.googleusercontent.com/aida-public/AB6AXuB212qMvV2n5oO8-E9GfH6O3x8mGf7kP9_xMvK-Z6lJ2kOQnQy_u1u_vM-s3n0lP1O8cO8kH3T6W_jRkC3tGfF7E2B4l2_v4Z6T_v9fV0nQ_bL3X_n0L3Q_wN_qM_bN_wN_vJ_qK_pL') center / cover no-repeat", filter: "blur(4px)" }}
+          style={{ background: "url('/assets/hero_bg.png') center / cover no-repeat", filter: "blur(4px)" }}
         ></div>
         <div className="absolute inset-0 bg-gradient-to-t from-[#15121b] via-[#15121b]/80 to-transparent"></div>
       </div>

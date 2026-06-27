@@ -29,7 +29,7 @@ const Footer: React.FC = () => {
           <img 
             className="w-14 h-14 rounded-md shadow-md object-cover" 
             alt="Album cover" 
-            src="https://lh3.googleusercontent.com/aida-public/AB6AXuCO8l4mzEO34g4vjufgYD3bcfR41Yfxdt8PNts_HlFcflo9Z9OeOsw4_ktDNxqGdQYcspNJHo6gOaJ3UUdnQDaV1Gi-yW-RuXYASAhGtx9veYDjcLpKXYg2cGSjST2joaivv0uYQ_gt7PxMkTSOblGWkL6NvNZaQNTQufOlVqRaggExhVbhohYiw7RggWhOzFDLtCx6OobSo2hB55jFcEOt4mn2vuCmZJchPo3kBs8hNDfd6T-jjdDBBi7kwfyLMvUBZfPIwOhU7GDn" 
+            src="/assets/album_cover.png" 
           />
           <div>
             <p className="font-body-md text-[#e8dfee] font-medium line-clamp-1 hover:underline cursor-pointer">Chromatic Surge</p>

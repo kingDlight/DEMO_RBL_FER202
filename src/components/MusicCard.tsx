@@ -5,7 +5,7 @@ const MusicCard: React.FC = () => {
   const musicData = {
     title: "Late Night Vibes",
     artist: "Curated by Auralis",
-    image: "https://lh3.googleusercontent.com/aida-public/AB6AXuBXgu00OTJNCxz1JCmNZZ0YJPPrwsKXqeGGKJlUfqDoqy4PGI_o91mdzfgCxttI8ZbVXCuROGYFpdUE2bcvuaQ9Ke7tD6itfcHSBgn3evuajxeKfUj-AqZ-1L8f3_2nndUWBgHPPoQkO3qckY4xZgLqCV5S9vVwlQIYNuFQMjjoUBAiRBwwd3xKIw1_kPRlhUWcUWhPsNh5IvlNvc47vWlQ7-nW2o6Q7Wy1YPyMCxUg3c9yvwkrPmQ7_mcJeB3ej3JKj_3cz9wFmnFh",
+    image: "/assets/album_cover.png",
     salePrice: "Free",
     originalPrice: "$1.99"
   };

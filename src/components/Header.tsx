@@ -33,7 +33,7 @@ const Header: React.FC = () => {
             <span className="material-symbols-outlined">contrast</span>
           </button>
           <button className="bg-[#7c3aed] text-[#ede0ff] px-6 py-2 rounded-full font-label-md text-[14px] hover:bg-[#d2bbff] hover:text-[#3f008e] transition-all active:scale-95">Premium</button>
-          <img alt="User avatar" className="w-10 h-10 rounded-full object-cover border border-[#4a4455]" src="https://lh3.googleusercontent.com/aida-public/AB6AXuAC5xTprSMz2eoRit6YVSx57uv_oDlCWEaEyu2Y0g4S3VxErK34BPbo97S2OrVz9sSy7WvUl91OXE0_eVT5LkLuPgjGkYTKagsyle4PWc7UTDhHCFfFvG5Y4d4ZBHAEEd-1ekdcQkVKHKFQdf7pRYyqCr7JAI57fXbKD_LsSFrO5EwIuL9_ix5sooIQ1q3edxalcKWH7foiva4oH8pch_A2i31yMCRsh-IvpzvlPcQyzY7nM7kUiyTkXNbV7UXm1hH8HCNzz6uoOkIO" />
+          <img alt="User avatar" className="w-10 h-10 rounded-full object-cover border border-[#4a4455]" src="/assets/user_avatar.png" />
         </div>
       </nav>
 
