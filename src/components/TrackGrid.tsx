@@ -4,9 +4,10 @@ import TrackCard, { type Track } from './TrackCard';
 interface TrackGridProps {
   tracks: Track[];
   onPlay: (track: Track) => void;
+  onAddToCart: (track: Track) => void;
 }
 
-const TrackGrid: React.FC<TrackGridProps> = ({ tracks, onPlay }) => {
+const TrackGrid: React.FC<TrackGridProps> = ({ tracks, onPlay, onAddToCart }) => {
   // Xử lý empty state
   if (!tracks || tracks.length === 0) {
     return (
@@ -20,7 +21,7 @@ const TrackGrid: React.FC<TrackGridProps> = ({ tracks, onPlay }) => {
     <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-[24px]">
       {tracks.map((track) => (
         <div key={track.id} className="flex justify-center">
-          <TrackCard track={track} onPlay={onPlay} />
+          <TrackCard track={track} onPlay={onPlay} onAddToCart={onAddToCart} />
         </div>
       ))}
     </div>
