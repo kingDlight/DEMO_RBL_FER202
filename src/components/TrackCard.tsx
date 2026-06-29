@@ -8,14 +8,16 @@ export interface Track {
   price: number;
   originalPrice: number;
   stock: number;
+  category?: string;
 }
 
 interface TrackCardProps {
   track: Track;
   onPlay: (track: Track) => void;
+  onAddToCart: (track: Track) => void;
 }
 
-const TrackCard: React.FC<TrackCardProps> = ({ track, onPlay }) => {
+const TrackCard: React.FC<TrackCardProps> = ({ track, onPlay, onAddToCart }) => {
   const isOutOfStock = track.stock === 0;
   const hasDiscount = track.originalPrice > track.price;
   const discountPercent = hasDiscount 
@@ -51,7 +53,11 @@ const TrackCard: React.FC<TrackCardProps> = ({ track, onPlay }) => {
           </button>
           
           <div className="flex gap-2">
-            <button className="w-10 h-10 rounded-full bg-[#221e28]/80 text-[#e8dfee] flex items-center justify-center hover:bg-[#3c3742] hover:text-[#d2bbff] transition-colors disabled:opacity-50" disabled={isOutOfStock}>
+            <button 
+              className="w-10 h-10 rounded-full bg-[#221e28]/80 text-[#e8dfee] flex items-center justify-center hover:bg-[#3c3742] hover:text-[#d2bbff] transition-colors disabled:opacity-50" 
+              onClick={() => onAddToCart(track)}
+              disabled={isOutOfStock}
+            >
               <span className="material-symbols-outlined">add</span>
             </button>
             <button className="w-10 h-10 rounded-full bg-[#221e28]/80 text-[#e8dfee] flex items-center justify-center hover:bg-[#3c3742] hover:text-[#ffb4ab] transition-colors disabled:opacity-50" disabled={isOutOfStock}>
