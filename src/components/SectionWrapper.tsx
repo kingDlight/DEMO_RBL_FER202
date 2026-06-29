@@ -15,18 +15,18 @@ const SectionWrapper: React.FC<SectionWrapperProps> = ({
 }) => {
   return (
     <section 
-      className="px-[16px] md:px-[32px] mb-[64px] rounded-2xl py-8"
+      className="px-3 px-md-4 mb-5 rounded-4 py-4"
       style={{ backgroundColor }}
     >
-      <div className="flex flex-col mb-[24px]">
-        <div className="flex justify-between items-end">
-          <h2 className="font-headline-lg text-[32px] font-bold text-[#e8dfee]">{title}</h2>
-          <a className="font-label-md text-[14px] text-[#d2bbff] hover:text-[#7c3aed] transition-colors cursor-pointer">
+      <div className="d-flex flex-column mb-4">
+        <div className="d-flex justify-content-between align-items-end">
+          <h2 className="display-6 fw-bold text-light mb-0">{title}</h2>
+          <a className="fs-6 text-primary text-decoration-none fw-semibold" href="#" style={{ cursor: 'pointer' }}>
             View All
           </a>
         </div>
         {subtitle && (
-          <p className="font-body-md text-[#ccc3d8] mt-2">{subtitle}</p>
+          <p className="text-secondary mt-2 mb-0">{subtitle}</p>
         )}
       </div>
       

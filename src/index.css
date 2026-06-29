@@ -1,21 +1,23 @@
-@import "tailwindcss";
+/* @import "tailwindcss"; (Bỏ Tailwind theo yêu cầu Tuần 5) */
 
-@theme {
-  --font-display: Inter, sans-serif;
-  --font-headline-lg: Inter, sans-serif;
-  --font-headline-md: Inter, sans-serif;
-  --font-body-lg: Inter, sans-serif;
-  --font-body-md: Inter, sans-serif;
-  --font-label-md: Inter, sans-serif;
-  --font-label-sm: Inter, sans-serif;
+:root {
+  /* Ghi đè màu gốc của Bootstrap để giữ được giao diện dark theme của Auralis */
+  --bs-body-bg: #0F172A;
+  --bs-body-color: #e8dfee;
+  
+  --bs-dark: #1E293B; /* Thay thế dark của Bootstrap bằng màu xám đen của mockup */
+  --bs-dark-rgb: 30, 41, 59;
+  
+  --bs-primary: #8b5cf6; /* Màu tím đặc trưng */
+  --bs-primary-rgb: 139, 92, 246;
+  
+  --bs-font-sans-serif: 'Inter', sans-serif;
 }
 
-@layer base {
-  body {
-    background-color: #0F172A;
-    color: #e8dfee;
-    font-family: 'Inter', sans-serif;
-  }
+body {
+  font-family: var(--bs-font-sans-serif);
+  background-color: var(--bs-body-bg);
+  color: var(--bs-body-color);
 }
 
 /* Custom Scrollbar for dark theme from the Auralis mockup */
@@ -26,9 +28,43 @@
   background: #0F172A; 
 }
 ::-webkit-scrollbar-thumb {
-  background: #37333e; 
+  background: #334155; 
   border-radius: 4px;
 }
 ::-webkit-scrollbar-thumb:hover {
-  background: #4a4455; 
+  background: #475569; 
+}
+
+/* Bootstrap custom overrides for Auralis aesthetics */
+.navbar-dark {
+  background-color: rgba(15, 23, 42, 0.95) !important;
+  backdrop-filter: blur(10px);
+  border-bottom: 1px solid rgba(255, 255, 255, 0.05);
+}
+
+.auralis-card {
+  background-color: #1E293B !important;
+  border: 1px solid rgba(255,255,255,0.05) !important;
+  border-radius: 12px !important;
+  overflow: hidden;
+  transition: transform 0.2s ease, box-shadow 0.2s ease;
+}
+
+.auralis-card:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 10px 20px rgba(0,0,0,0.3) !important;
+}
+
+.auralis-banner {
+  background: linear-gradient(rgba(15, 23, 42, 0.7), rgba(15, 23, 42, 1)), url('https://images.unsplash.com/photo-1614149162883-504ce4d13909?q=80&w=2000') no-repeat center center;
+  background-size: cover;
+  border-radius: 16px;
+  padding: 60px 20px;
+  text-align: center;
+  margin-bottom: 2rem;
+}
+
+.nav-link.active {
+  color: #fff !important;
+  border-bottom: 2px solid var(--bs-primary);
 }

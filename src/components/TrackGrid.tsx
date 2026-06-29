@@ -1,29 +1,30 @@
 import React from 'react';
+import { Row, Col } from 'react-bootstrap';
 import TrackCard, { type Track } from './TrackCard';
 
 interface TrackGridProps {
   tracks: Track[];
   onPlay: (track: Track) => void;
+  onAddToCart: (track: Track) => void;
 }
 
-const TrackGrid: React.FC<TrackGridProps> = ({ tracks, onPlay }) => {
-  // Xử lý empty state
+const TrackGrid: React.FC<TrackGridProps> = ({ tracks, onPlay, onAddToCart }) => {
   if (!tracks || tracks.length === 0) {
     return (
-      <div className="flex justify-center items-center py-12 bg-[#1d1a24] rounded-xl border border-white/5 border-dashed">
-        <p className="font-body-md text-[#ccc3d8] text-lg">Không có bài hát nào</p>
+      <div className="d-flex justify-content-center align-items-center py-5 bg-dark rounded-3 border border-secondary border-dashed">
+        <p className="text-secondary fs-5 mb-0">Không có bài hát nào</p>
       </div>
     );
   }
 
   return (
-    <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-[24px]">
+    <Row xs={1} sm={2} md={3} lg={4} xl={5} className="g-4">
       {tracks.map((track) => (
-        <div key={track.id} className="flex justify-center">
-          <TrackCard track={track} onPlay={onPlay} />
-        </div>
+        <Col key={track.id} className="d-flex justify-content-center">
+          <TrackCard track={track} onPlay={onPlay} onAddToCart={onAddToCart} />
+        </Col>
       ))}
-    </div>
+    </Row>
   );
 };
 

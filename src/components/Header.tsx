@@ -1,66 +1,63 @@
 import React from 'react';
+import { Navbar, Nav, Container, Badge, Button } from 'react-bootstrap';
+import SearchBar from './SearchBar';
 
-const Header: React.FC = () => {
+interface HeaderProps {
+  cartCount: number;
+  onSearch: (keyword: string) => void;
+  onNavigate: (view: 'home' | 'admin') => void;
+  view: 'home' | 'admin';
+}
+
+const Header: React.FC<HeaderProps> = ({ cartCount, onSearch, onNavigate, view }) => {
   return (
-    <>
-      {/* TopNavBar (Desktop) */}
-      <nav className="hidden md:flex bg-[#15121b]/70 backdrop-blur-xl fixed top-0 w-full z-50 border-b border-white/10 shadow-xl justify-between items-center px-[32px] py-[16px] max-w-full">
-        <div className="flex items-center gap-[32px]">
-          <span className="font-display text-[24px] font-extrabold text-[#d2bbff] tracking-tight">Auralis</span>
-          <div className="flex items-center gap-[16px]">
-            <a className="text-[#ccc3d8] hover:text-[#e8dfee] transition-colors hover:bg-white/5 px-3 py-2 rounded-lg font-label-md text-[14px]" href="#">Home</a>
-            <a className="text-[#d2bbff] font-bold border-b-2 border-[#d2bbff] pb-1 px-3 py-2 font-label-md text-[14px]" href="#">Discover</a>
-            <a className="text-[#ccc3d8] hover:text-[#e8dfee] transition-colors hover:bg-white/5 px-3 py-2 rounded-lg font-label-md text-[14px]" href="#">Library</a>
-            <a className="text-[#ccc3d8] hover:text-[#e8dfee] transition-colors hover:bg-white/5 px-3 py-2 rounded-lg font-label-md text-[14px]" href="#">Playlists</a>
-            <a className="text-[#ccc3d8] hover:text-[#e8dfee] transition-colors hover:bg-white/5 px-3 py-2 rounded-lg font-label-md text-[14px]" href="#">Artists</a>
-          </div>
-        </div>
-        <div className="flex items-center gap-[24px]">
-          <div className="relative">
-            <span className="material-symbols-outlined absolute left-3 top-1/2 -translate-y-1/2 text-[#ccc3d8]">search</span>
-            <input className="bg-[#2c2833] border-[#4a4455] text-[#e8dfee] rounded-full pl-10 pr-4 py-2 focus:border-[#7c3aed] focus:ring-[#7c3aed] font-body-md text-[16px] w-64" placeholder="Search..." type="text" />
-          </div>
+    <Navbar bg="dark" variant="dark" expand="lg" fixed="top" className="navbar-dark shadow-lg">
+      <Container fluid="xxl">
+        <Navbar.Brand href="#" className="fs-4 fw-bold text-primary tracking-tight" onClick={() => onNavigate('home')}>
+          Auralis
+        </Navbar.Brand>
+        
+        <Navbar.Toggle aria-controls="basic-navbar-nav" />
+        
+        <Navbar.Collapse id="basic-navbar-nav">
+          <Nav className="me-auto mb-2 mb-lg-0 gap-lg-3 ms-lg-4">
+            <Nav.Link href="#" active={view === 'home'} onClick={() => onNavigate('home')} className={`px-3 py-2 rounded ${view === 'home' ? 'fw-bold' : 'text-secondary hover-text-light'}`}>Home</Nav.Link>
+            <Nav.Link href="#" active={view === 'admin'} onClick={() => onNavigate('admin')} className={`px-3 py-2 rounded ${view === 'admin' ? 'fw-bold' : 'text-secondary hover-text-light'}`}>Admin</Nav.Link>
+            <Nav.Link href="#" className="text-secondary hover-text-light px-3 py-2 rounded">Library</Nav.Link>
+            <Nav.Link href="#" className="text-secondary hover-text-light px-3 py-2 rounded">Playlists</Nav.Link>
+          </Nav>
           
-          {/* Icon giỏ hàng/thông báo với số 0 (Hardcode theo requirement) */}
-          <button className="relative text-[#ccc3d8] hover:text-[#e8dfee] hover:bg-white/5 p-2 rounded-full transition-all active:scale-95">
-            <span className="material-symbols-outlined">notifications</span>
-            <span className="absolute top-0 right-0 bg-[#ffb4ab] text-[#690005] text-[10px] font-bold px-1.5 py-0.5 rounded-full border-2 border-[#15121b]">
-              0
-            </span>
-          </button>
-          
-          <button className="text-[#ccc3d8] hover:text-[#e8dfee] hover:bg-white/5 p-2 rounded-full transition-all active:scale-95">
-            <span className="material-symbols-outlined">contrast</span>
-          </button>
-          <button className="bg-[#7c3aed] text-[#ede0ff] px-6 py-2 rounded-full font-label-md text-[14px] hover:bg-[#d2bbff] hover:text-[#3f008e] transition-all active:scale-95">Premium</button>
-          <img alt="User avatar" className="w-10 h-10 rounded-full object-cover border border-[#4a4455]" src="/assets/user_avatar.png" />
-        </div>
-      </nav>
-
-      {/* BottomNavBar (Mobile Only) */}
-      <nav className="md:hidden bg-[#221e28]/80 backdrop-blur-xl fixed bottom-0 w-full z-50 border-t border-white/10 shadow-[0px_-10px_40px_rgba(0,0,0,0.4)] flex justify-around items-center px-4 py-3">
-        <a className="flex flex-col items-center justify-center text-[#ccc3d8] hover:text-[#d2bbff] transition-colors scale-110 duration-200" href="#">
-          <span className="material-symbols-outlined">home</span>
-          <span className="font-label-sm text-[12px]">Home</span>
-        </a>
-        <a className="flex flex-col items-center justify-center text-[#d2bbff] scale-110 duration-200" href="#">
-          <span className="material-symbols-outlined" style={{ fontVariationSettings: "'FILL' 1" }}>explore</span>
-          <span className="font-label-sm text-[12px]">Discover</span>
-        </a>
-        <a className="flex flex-col items-center justify-center text-[#ccc3d8] hover:text-[#d2bbff] transition-colors scale-110 duration-200" href="#">
-          <span className="material-symbols-outlined">library_music</span>
-          <span className="font-label-sm text-[12px]">Library</span>
-        </a>
-        <a className="flex flex-col items-center justify-center text-[#ccc3d8] hover:text-[#d2bbff] transition-colors scale-110 duration-200" href="#">
-          <span className="material-symbols-outlined">playlist_play</span>
-          <span className="font-label-sm text-[12px]">Playlists</span>
-        </a>
-        <a className="flex flex-col items-center justify-center text-[#ccc3d8] hover:text-[#d2bbff] transition-colors scale-110 duration-200" href="#">
-          <span className="material-symbols-outlined">person</span>
-          <span className="font-label-sm text-[12px]">Artists</span>
-        </a>
-      </nav>
-    </>
+          <div className="d-flex align-items-center gap-3">
+            <SearchBar onSearch={onSearch} />
+            
+            {/* Cart Icon / Notifications */}
+            <Button variant="link" className="text-secondary hover-text-light p-2 position-relative text-decoration-none">
+              <span className="material-symbols-outlined fs-5">notifications</span>
+              {cartCount > 0 && (
+                <Badge bg="danger" pill className="position-absolute top-0 start-100 translate-middle border border-dark rounded-circle" style={{ fontSize: '0.65rem' }}>
+                  {cartCount}
+                </Badge>
+              )}
+            </Button>
+            
+            <Button variant="link" className="text-secondary hover-text-light p-2 text-decoration-none">
+              <span className="material-symbols-outlined fs-5">contrast</span>
+            </Button>
+            
+            <Button variant="primary" className="rounded-pill px-4 py-2 fw-semibold text-white">
+              Premium
+            </Button>
+            
+            <img 
+              alt="User avatar" 
+              className="rounded-circle border border-secondary object-fit-cover" 
+              style={{ width: '40px', height: '40px' }}
+              src="/assets/user_avatar.png" 
+            />
+          </div>
+        </Navbar.Collapse>
+      </Container>
+    </Navbar>
   );
 };
 
