@@ -1,6 +1,12 @@
 import React from 'react';
+import SearchBar from './SearchBar';
 
-const Header: React.FC = () => {
+interface HeaderProps {
+  cartCount: number;
+  onSearch: (keyword: string) => void;
+}
+
+const Header: React.FC<HeaderProps> = ({ cartCount, onSearch }) => {
   return (
     <>
       {/* TopNavBar (Desktop) */}
@@ -16,17 +22,16 @@ const Header: React.FC = () => {
           </div>
         </div>
         <div className="flex items-center gap-[24px]">
-          <div className="relative">
-            <span className="material-symbols-outlined absolute left-3 top-1/2 -translate-y-1/2 text-[#ccc3d8]">search</span>
-            <input className="bg-[#2c2833] border-[#4a4455] text-[#e8dfee] rounded-full pl-10 pr-4 py-2 focus:border-[#7c3aed] focus:ring-[#7c3aed] font-body-md text-[16px] w-64" placeholder="Search..." type="text" />
-          </div>
+          <SearchBar onSearch={onSearch} />
           
-          {/* Icon giỏ hàng/thông báo với số 0 (Hardcode theo requirement) */}
+          {/* Icon giỏ hàng/thông báo */}
           <button className="relative text-[#ccc3d8] hover:text-[#e8dfee] hover:bg-white/5 p-2 rounded-full transition-all active:scale-95">
             <span className="material-symbols-outlined">notifications</span>
-            <span className="absolute top-0 right-0 bg-[#ffb4ab] text-[#690005] text-[10px] font-bold px-1.5 py-0.5 rounded-full border-2 border-[#15121b]">
-              0
-            </span>
+            {cartCount > 0 && (
+              <span className="absolute top-0 right-0 bg-[#ffb4ab] text-[#690005] text-[10px] font-bold px-1.5 py-0.5 rounded-full border-2 border-[#15121b]">
+                {cartCount}
+              </span>
+            )}
           </button>
           
           <button className="text-[#ccc3d8] hover:text-[#e8dfee] hover:bg-white/5 p-2 rounded-full transition-all active:scale-95">
