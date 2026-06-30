@@ -20,7 +20,7 @@ const SectionWrapper: React.FC<SectionWrapperProps> = ({
     >
       <div className="d-flex flex-column mb-4">
         <div className="d-flex justify-content-between align-items-end">
-          <h2 className="display-6 fw-bold text-light mb-0">{title}</h2>
+          <h2 className="display-6 fw-bold text-body mb-0">{title}</h2>
           <a className="fs-6 text-primary text-decoration-none fw-semibold" href="#" style={{ cursor: 'pointer' }}>
             View All
           </a>

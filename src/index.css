@@ -1,53 +1,63 @@
 /* @import "tailwindcss"; (Bỏ Tailwind theo yêu cầu Tuần 5) */
 
 :root {
+  --bs-primary: #8b5cf6; /* Màu tím đặc trưng */
+  --bs-primary-rgb: 139, 92, 246;
+  --bs-font-sans-serif: 'Inter', sans-serif;
+}
+
+[data-bs-theme="dark"] {
   /* Ghi đè màu gốc của Bootstrap để giữ được giao diện dark theme của Auralis */
   --bs-body-bg: #0F172A;
   --bs-body-color: #e8dfee;
   
   --bs-dark: #1E293B; /* Thay thế dark của Bootstrap bằng màu xám đen của mockup */
   --bs-dark-rgb: 30, 41, 59;
-  
-  --bs-primary: #8b5cf6; /* Màu tím đặc trưng */
-  --bs-primary-rgb: 139, 92, 246;
-  
-  --bs-font-sans-serif: 'Inter', sans-serif;
 }
 
 body {
   font-family: var(--bs-font-sans-serif);
   background-color: var(--bs-body-bg);
   color: var(--bs-body-color);
+  transition: background-color 0.3s ease, color 0.3s ease;
 }
 
-/* Custom Scrollbar for dark theme from the Auralis mockup */
+/* Custom Scrollbar */
 ::-webkit-scrollbar {
   width: 8px;
 }
-::-webkit-scrollbar-track {
+[data-bs-theme="dark"] ::-webkit-scrollbar-track {
   background: #0F172A; 
 }
-::-webkit-scrollbar-thumb {
+[data-bs-theme="dark"] ::-webkit-scrollbar-thumb {
   background: #334155; 
   border-radius: 4px;
 }
-::-webkit-scrollbar-thumb:hover {
+[data-bs-theme="dark"] ::-webkit-scrollbar-thumb:hover {
   background: #475569; 
 }
 
 /* Bootstrap custom overrides for Auralis aesthetics */
-.navbar-dark {
+[data-bs-theme="dark"] .navbar-dark {
   background-color: rgba(15, 23, 42, 0.95) !important;
   backdrop-filter: blur(10px);
   border-bottom: 1px solid rgba(255, 255, 255, 0.05);
 }
 
 .auralis-card {
-  background-color: #1E293B !important;
-  border: 1px solid rgba(255,255,255,0.05) !important;
   border-radius: 12px !important;
   overflow: hidden;
   transition: transform 0.2s ease, box-shadow 0.2s ease;
+}
+
+[data-bs-theme="dark"] .auralis-card {
+  background-color: #1E293B;
+  border: 1px solid rgba(255,255,255,0.05) !important;
+}
+
+[data-bs-theme="light"] .auralis-card {
+  background-color: #ffffff;
+  border: 1px solid rgba(0,0,0,0.08) !important;
 }
 
 .auralis-card:hover {
@@ -56,15 +66,39 @@ body {
 }
 
 .auralis-banner {
-  background: linear-gradient(rgba(15, 23, 42, 0.7), rgba(15, 23, 42, 1)), url('https://images.unsplash.com/photo-1614149162883-504ce4d13909?q=80&w=2000') no-repeat center center;
-  background-size: cover;
   border-radius: 16px;
   padding: 60px 20px;
   text-align: center;
   margin-bottom: 2rem;
+  background-size: cover;
+}
+
+[data-bs-theme="dark"] .auralis-banner {
+  background: linear-gradient(rgba(15, 23, 42, 0.7), rgba(15, 23, 42, 1)), url('https://images.unsplash.com/photo-1614149162883-504ce4d13909?q=80&w=2000') no-repeat center center;
+  background-size: cover;
+}
+
+[data-bs-theme="light"] .auralis-banner {
+  background: linear-gradient(rgba(240, 240, 245, 0.8), rgba(240, 240, 245, 1)), url('https://images.unsplash.com/photo-1614149162883-504ce4d13909?q=80&w=2000') no-repeat center center;
+  background-size: cover;
+}
+
+[data-bs-theme="dark"] .nav-link.active {
+  color: #fff !important;
+}
+
+[data-bs-theme="light"] .nav-link.active {
+  color: #000 !important;
 }
 
 .nav-link.active {
-  color: #fff !important;
   border-bottom: 2px solid var(--bs-primary);
+}
+
+.hover-text-light:hover {
+  color: #f8f9fa !important;
+}
+
+.hover-text-dark:hover {
+  color: #212529 !important;
 }

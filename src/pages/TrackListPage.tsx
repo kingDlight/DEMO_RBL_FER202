@@ -1,20 +1,50 @@
-import React, { useState } from 'react';
-import { Container } from 'react-bootstrap';
+import React, { useState, useEffect, useRef } from 'react';
+import { Container, Spinner } from 'react-bootstrap';
 import SectionWrapper from '../components/SectionWrapper';
 import CategoryList from '../components/CategoryList';
 import TrackGrid from '../components/TrackGrid';
+import SearchBar from '../components/SearchBar';
 import { CATEGORIES, TRACKS } from '../data/tracks';
 import type { Track } from '../components/TrackCard';
+import { useCart } from '../context/CartContext';
 
-interface TrackListPageProps {
-  keyword: string;
-  onAddToCart: (track: Track) => void;
-}
-
-const TrackListPage: React.FC<TrackListPageProps> = ({ keyword, onAddToCart }) => {
+const TrackListPage: React.FC = () => {
   const [activeCategory, setActiveCategory] = useState<string | null>(null);
+  const [keyword, setKeyword] = useState<string>('');
+  const [loading, setLoading] = useState<boolean>(true);
+  const [tracks, setTracks] = useState<Track[]>([]);
+  
+  const searchInputRef = useRef<HTMLInputElement>(null);
+  const { totalItems } = useCart();
 
-  const filteredTracks = TRACKS.filter((track) => {
+  // Effect 1: Fake API call
+  useEffect(() => {
+    setLoading(true);
+    const timer = setTimeout(() => {
+      setTracks(TRACKS);
+      setLoading(false);
+    }, 800);
+    return () => clearTimeout(timer); // Cleanup function
+  }, []);
+
+  // Effect 2: Update document title
+  useEffect(() => {
+    const originalTitle = 'Auralis Bookstore'; // We keep the original title logic
+    document.title = totalItems > 0 ? `(${totalItems}) Auralis Library` : originalTitle;
+    
+    return () => { 
+      document.title = originalTitle; // Cleanup when unmounting
+    };
+  }, [totalItems]);
+
+  // Effect 3: Auto-focus search input after loading
+  useEffect(() => {
+    if (!loading && searchInputRef.current) {
+      searchInputRef.current.focus();
+    }
+  }, [loading]);
+
+  const filteredTracks = tracks.filter((track) => {
     const matchKw = !keyword || track.title.toLowerCase().includes(keyword.toLowerCase());
     const matchCat = activeCategory === null || track.category === activeCategory;
     return matchKw && matchCat;
@@ -26,6 +56,14 @@ const TrackListPage: React.FC<TrackListPageProps> = ({ keyword, onAddToCart }) =
 
   return (
     <Container fluid="xxl">
+      {/* Search Section */}
+      <div className="py-4 d-flex flex-column align-items-center justify-content-center">
+        <h2 className="display-6 fw-bold mb-4">Discover Music</h2>
+        <div style={{ maxWidth: '600px', width: '100%' }}>
+          <SearchBar ref={searchInputRef} onSearch={setKeyword} />
+        </div>
+      </div>
+
       <SectionWrapper title="Browse Categories">
         <CategoryList 
           categories={CATEGORIES} 
@@ -33,15 +71,22 @@ const TrackListPage: React.FC<TrackListPageProps> = ({ keyword, onAddToCart }) =
           onSelectCategory={setActiveCategory} 
         />
       </SectionWrapper>
+      
       <SectionWrapper 
         title="Trending Playlists" 
         subtitle="Top tracks curated just for you this week"
       >
-        <TrackGrid 
-          tracks={filteredTracks} 
-          onPlay={handlePlay} 
-          onAddToCart={onAddToCart} 
-        />
+        {loading ? (
+          <div className="d-flex justify-content-center align-items-center py-5">
+            <Spinner animation="border" variant="primary" />
+            <span className="ms-3 text-secondary">Loading tracks...</span>
+          </div>
+        ) : (
+          <TrackGrid 
+            tracks={filteredTracks} 
+            onPlay={handlePlay} 
+          />
+        )}
       </SectionWrapper>
     </Container>
   );

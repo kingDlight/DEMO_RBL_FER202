@@ -2,24 +2,23 @@ import React from 'react';
 import { useParams, useNavigate, Link } from 'react-router-dom';
 import { Container, Button, Card, Badge } from 'react-bootstrap';
 import { TRACKS } from '../data/tracks';
-import type { Track } from '../components/TrackCard';
+import { useCart } from '../context/CartContext';
+import { useTheme } from '../context/ThemeContext';
 
-interface TrackDetailPageProps {
-  onAddToCart: (track: Track) => void;
-}
-
-const TrackDetailPage: React.FC<TrackDetailPageProps> = ({ onAddToCart }) => {
+const TrackDetailPage: React.FC = () => {
   const { id } = useParams<{ id: string }>();
   const navigate = useNavigate();
+  const { addToCart } = useCart();
+  const { isDark } = useTheme();
 
   const track = TRACKS.find((t) => t.id === parseInt(id || '0', 10));
 
   if (!track) {
     return (
-      <Container className="text-center py-5 text-white">
+      <Container className="text-center py-5 text-body">
         <h2>Không tìm thấy bài hát</h2>
         <p>Bài hát bạn đang tìm kiếm không tồn tại hoặc đã bị xóa.</p>
-        <Button variant="outline-light" onClick={() => navigate(-1)}>
+        <Button variant="outline-primary" onClick={() => navigate(-1)}>
           Quay lại
         </Button>
       </Container>
@@ -27,7 +26,7 @@ const TrackDetailPage: React.FC<TrackDetailPageProps> = ({ onAddToCart }) => {
   }
 
   return (
-    <Container className="py-5 text-white">
+    <Container className="py-5 text-body">
       <div className="mb-4">
         <Link to="/" className="text-secondary text-decoration-none">Trang chủ</Link>
         <span className="mx-2 text-secondary">&gt;</span>
@@ -36,7 +35,7 @@ const TrackDetailPage: React.FC<TrackDetailPageProps> = ({ onAddToCart }) => {
         <span>{track.title}</span>
       </div>
 
-      <Card bg="dark" text="white" className="border-0 shadow-lg" style={{ maxWidth: '800px', margin: '0 auto' }}>
+      <Card bg={isDark ? "dark" : "light"} text={isDark ? "white" : "dark"} className="border-0 shadow-lg" style={{ maxWidth: '800px', margin: '0 auto' }}>
         <div className="row g-0">
           <div className="col-md-5">
             <Card.Img src={track.image} alt={track.title} className="h-100 object-fit-cover" />
@@ -63,7 +62,7 @@ const TrackDetailPage: React.FC<TrackDetailPageProps> = ({ onAddToCart }) => {
               </p>
 
               <div className="d-flex gap-3 mt-auto">
-                <Button variant="primary" onClick={() => onAddToCart(track)}>
+                <Button variant="primary" onClick={() => addToCart(track)}>
                   Thêm vào giỏ hàng
                 </Button>
                 <Button variant="outline-light" onClick={() => navigate(-1)}>

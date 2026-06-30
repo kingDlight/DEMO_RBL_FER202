@@ -7,18 +7,12 @@ import TrackGrid from '../components/TrackGrid';
 import { CATEGORIES, TRACKS } from '../data/tracks';
 import type { Track } from '../components/TrackCard';
 
-interface HomePageProps {
-  keyword: string;
-  onAddToCart: (track: Track) => void;
-}
-
-const HomePage: React.FC<HomePageProps> = ({ keyword, onAddToCart }) => {
+const HomePage: React.FC = () => {
   const [activeCategory, setActiveCategory] = useState<string | null>(null);
 
   const filteredTracks = TRACKS.filter((track) => {
-    const matchKw = !keyword || track.title.toLowerCase().includes(keyword.toLowerCase());
     const matchCat = activeCategory === null || track.category === activeCategory;
-    return matchKw && matchCat;
+    return matchCat;
   });
 
   const handlePlay = (track: Track) => {
@@ -44,7 +38,6 @@ const HomePage: React.FC<HomePageProps> = ({ keyword, onAddToCart }) => {
         <TrackGrid 
           tracks={filteredTracks} 
           onPlay={handlePlay} 
-          onAddToCart={onAddToCart} 
         />
       </SectionWrapper>
     </Container>

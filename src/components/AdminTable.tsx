@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
 import { Table, Button, Modal, Form, Badge, Container } from 'react-bootstrap';
 import type { Track } from './TrackCard';
+import { useTheme } from '../context/ThemeContext';
 
 interface AdminTableProps {
   initialTracks: Track[];
@@ -10,6 +11,7 @@ const AdminTable: React.FC<AdminTableProps> = ({ initialTracks }) => {
   const [tracks, setTracks] = useState<Track[]>(initialTracks);
   const [showModal, setShowModal] = useState(false);
   const [isEditing, setIsEditing] = useState(false);
+  const { isDark } = useTheme();
   
   const [formData, setFormData] = useState<Track>({
     id: 0,
@@ -60,12 +62,12 @@ const AdminTable: React.FC<AdminTableProps> = ({ initialTracks }) => {
   return (
     <Container className="py-4">
       <div className="d-flex justify-content-between align-items-center mb-4">
-        <h2 className="text-light m-0">Admin Dashboard</h2>
+        <h2 className={isDark ? "text-light m-0" : "text-dark m-0"}>Admin Dashboard</h2>
         <Button variant="primary" onClick={handleShowAdd}>+ Add New Track</Button>
       </div>
 
       <div className="table-responsive rounded border border-secondary">
-        <Table striped bordered hover variant="dark" className="m-0 align-middle">
+        <Table striped bordered hover variant={isDark ? "dark" : undefined} className="m-0 align-middle">
           <thead>
             <tr>
               <th>ID</th>
@@ -95,7 +97,7 @@ const AdminTable: React.FC<AdminTableProps> = ({ initialTracks }) => {
                   </Badge>
                 </td>
                 <td>
-                  <Button variant="outline-light" size="sm" className="me-2" onClick={() => handleShowEdit(track)}>Edit</Button>
+                  <Button variant={isDark ? "outline-light" : "outline-dark"} size="sm" className="me-2" onClick={() => handleShowEdit(track)}>Edit</Button>
                   <Button variant="outline-danger" size="sm" onClick={() => handleDelete(track.id)}>Delete</Button>
                 </td>
               </tr>
@@ -110,7 +112,7 @@ const AdminTable: React.FC<AdminTableProps> = ({ initialTracks }) => {
       </div>
 
       {/* Add / Edit Modal */}
-      <Modal show={showModal} onHide={handleClose} data-bs-theme="dark" className="text-light">
+      <Modal show={showModal} onHide={handleClose} data-bs-theme={isDark ? "dark" : "light"} className={isDark ? "text-light" : "text-dark"}>
         <Modal.Header closeButton className="border-secondary border-bottom">
           <Modal.Title>{isEditing ? 'Edit Track' : 'Add New Track'}</Modal.Title>
         </Modal.Header>

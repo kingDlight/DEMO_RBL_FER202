@@ -17,7 +17,7 @@ const CategoryList: React.FC<CategoryListProps> = ({ categories, activeCategory,
             return (
               <Col key={index}>
                 <Card 
-                  className={`text-center h-100 auralis-card cursor-pointer border-0 ${isActive ? 'bg-primary text-white' : 'bg-dark text-light'}`}
+                  className={`text-center h-100 auralis-card cursor-pointer border-0 ${isActive ? 'bg-primary text-white' : 'text-body'}`}
                   style={{ cursor: 'pointer' }}
                   onClick={() => onSelectCategory(cat === 'All' ? null : cat)}
                 >

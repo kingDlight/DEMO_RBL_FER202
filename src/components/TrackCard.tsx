@@ -1,6 +1,7 @@
 import React from 'react';
 import { Card, Badge, Button } from 'react-bootstrap';
 import { useNavigate } from 'react-router-dom';
+import { useCart } from '../context/CartContext';
 
 export interface Track {
   id: number;
@@ -16,11 +17,11 @@ export interface Track {
 interface TrackCardProps {
   track: Track;
   onPlay: (track: Track) => void;
-  onAddToCart: (track: Track) => void;
 }
 
-const TrackCard: React.FC<TrackCardProps> = ({ track, onPlay, onAddToCart }) => {
+const TrackCard: React.FC<TrackCardProps> = ({ track, onPlay }) => {
   const navigate = useNavigate();
+  const { addToCart } = useCart();
   const isOutOfStock = track.stock === 0;
   const hasDiscount = track.originalPrice > track.price;
   const discountPercent = hasDiscount 
@@ -32,7 +33,7 @@ const TrackCard: React.FC<TrackCardProps> = ({ track, onPlay, onAddToCart }) => 
   };
 
   return (
-    <Card className={`h-100 shadow-sm auralis-card border-0 text-white ${isOutOfStock ? 'opacity-75' : ''}`}>
+    <Card className={`h-100 shadow-sm auralis-card border-0 text-body ${isOutOfStock ? 'opacity-75' : ''}`}>
       <div className="position-relative overflow-hidden group" style={{ cursor: 'pointer' }} onClick={handleGoToDetail}>
         <Card.Img 
           variant="top" 
@@ -105,7 +106,7 @@ const TrackCard: React.FC<TrackCardProps> = ({ track, onPlay, onAddToCart }) => 
               variant="primary" 
               size="sm" 
               className="w-100 fw-bold d-flex align-items-center justify-content-center gap-2"
-              onClick={() => onAddToCart(track)}
+              onClick={() => addToCart(track)}
             >
               <span className="material-symbols-outlined fs-6">add_shopping_cart</span>
               Add to Cart

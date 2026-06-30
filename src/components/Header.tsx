@@ -1,18 +1,20 @@
 import React from 'react';
 import { Navbar, Nav, Container, Badge, Button } from 'react-bootstrap';
 import { NavLink, Link } from 'react-router-dom';
-import SearchBar from './SearchBar';
+import { useCart } from '../context/CartContext';
+import { useTheme } from '../context/ThemeContext';
 
 interface HeaderProps {
-  cartCount: number;
-  onSearch: (keyword: string) => void;
   isAuthenticated: boolean;
   onLoginToggle: () => void;
 }
 
-const Header: React.FC<HeaderProps> = ({ cartCount, onSearch, isAuthenticated, onLoginToggle }) => {
+const Header: React.FC<HeaderProps> = ({ isAuthenticated, onLoginToggle }) => {
+  const { totalItems } = useCart();
+  const { isDark, toggleTheme } = useTheme();
+
   return (
-    <Navbar bg="dark" variant="dark" expand="lg" fixed="top" className="navbar-dark shadow-lg">
+    <Navbar bg={isDark ? "dark" : "light"} variant={isDark ? "dark" : "light"} expand="lg" fixed="top" className={isDark ? "navbar-dark shadow-lg" : "shadow-sm border-bottom"}>
       <Container fluid="xxl">
         <Navbar.Brand as={Link} to="/" className="fs-4 fw-bold text-primary tracking-tight">
           Auralis
@@ -22,31 +24,29 @@ const Header: React.FC<HeaderProps> = ({ cartCount, onSearch, isAuthenticated, o
         
         <Navbar.Collapse id="basic-navbar-nav">
           <Nav className="me-auto mb-2 mb-lg-0 gap-lg-3 ms-lg-4">
-            <Nav.Link as={NavLink} to="/" end className="px-3 py-2 rounded text-secondary hover-text-light">
+            <Nav.Link as={NavLink} to="/" end className="px-3 py-2 rounded fw-medium">
               Home
             </Nav.Link>
-            <Nav.Link as={NavLink} to="/tracks" className="px-3 py-2 rounded text-secondary hover-text-light">
+            <Nav.Link as={NavLink} to="/tracks" className="px-3 py-2 rounded fw-medium">
               Library
             </Nav.Link>
-            <Nav.Link as={NavLink} to="/admin/tracks" className="px-3 py-2 rounded text-secondary hover-text-light">
+            <Nav.Link as={NavLink} to="/admin/tracks" className="px-3 py-2 rounded fw-medium">
               Admin
             </Nav.Link>
           </Nav>
           
           <div className="d-flex align-items-center gap-3">
-            <SearchBar onSearch={onSearch} />
-            
             {/* Cart Icon */}
-            <Link to="/cart" className="text-secondary hover-text-light p-2 position-relative text-decoration-none">
+            <Link to="/cart" className={`p-2 position-relative text-decoration-none ${isDark ? 'text-secondary hover-text-light' : 'text-muted hover-text-dark'}`}>
               <span className="material-symbols-outlined fs-5">shopping_cart</span>
-              {cartCount > 0 && (
+              {totalItems > 0 && (
                 <Badge bg="danger" pill className="position-absolute top-0 start-100 translate-middle border border-dark rounded-circle" style={{ fontSize: '0.65rem' }}>
-                  {cartCount}
+                  {totalItems}
                 </Badge>
               )}
             </Link>
             
-            <Button variant="link" className="text-secondary hover-text-light p-2 text-decoration-none">
+            <Button variant="link" onClick={toggleTheme} className={`p-2 text-decoration-none ${isDark ? 'text-secondary hover-text-light' : 'text-muted hover-text-dark'}`}>
               <span className="material-symbols-outlined fs-5">contrast</span>
             </Button>
             
