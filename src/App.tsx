@@ -1,37 +1,27 @@
 import React, { useState } from 'react';
-import { Container } from 'react-bootstrap';
+import { Routes, Route } from 'react-router-dom';
 import Header from './components/Header';
-import Banner from './components/Banner';
-import CategoryList from './components/CategoryList';
-import TrackGrid from './components/TrackGrid';
 import Footer from './components/Footer';
-import SectionWrapper from './components/SectionWrapper';
 import AdminTable from './components/AdminTable';
+import ProtectedRoute from './components/ProtectedRoute';
+import HomePage from './pages/HomePage';
+import TrackListPage from './pages/TrackListPage';
+import TrackDetailPage from './pages/TrackDetailPage';
+import CartPage from './pages/CartPage';
+import NotFoundPage from './pages/NotFoundPage';
+import { TRACKS } from './data/tracks';
 import type { Track } from './components/TrackCard';
 
 export interface CartItem extends Track {
   quantity: number;
 }
 
-// Dữ liệu mock
-const CATEGORIES = ["All", "Electronic", "Synthwave", "Lo-Fi", "Ambient", "Pop", "Rock", "Jazz"];
-
-const TRACKS: Track[] = [
-  { id: 1, title: "Late Night Vibes", artist: "Curated by Auralis", image: "/assets/album_cover.png", price: 0, originalPrice: 1.99, stock: 100, category: "Lo-Fi" },
-  { id: 2, title: "Resonance", artist: "HOME", image: "/assets/album_cover.png", price: 1.49, originalPrice: 1.99, stock: 50, category: "Synthwave" },
-  { id: 3, title: "Nightcall", artist: "Kavinsky", image: "/assets/album_cover.png", price: 0.99, originalPrice: 0.99, stock: 0, category: "Electronic" },
-  { id: 4, title: "Pacific Coast Highway", artist: "Kavinsky", image: "/assets/album_cover.png", price: 2.99, originalPrice: 3.99, stock: 20, category: "Synthwave" }
-];
-
 const App: React.FC = () => {
   const [cart, setCart] = useState<CartItem[]>([]);
   const [keyword, setKeyword] = useState<string>('');
-  const [activeCategory, setActiveCategory] = useState<string | null>(null);
-  const [view, setView] = useState<'home' | 'admin'>('home');
-
-  const handlePlay = (track: Track) => {
-    console.log(`Đang phát bài hát: ${track.title} - ${track.artist}`);
-  };
+  
+  // Mock authentication state for ProtectedRoute demonstration
+  const [isAuthenticated, setIsAuthenticated] = useState<boolean>(false);
 
   const handleAddToCart = (track: Track) => {
     setCart((prevCart) => {
@@ -45,56 +35,54 @@ const App: React.FC = () => {
     });
   };
 
+  const handleUpdateQuantity = (id: number, delta: number) => {
+    setCart((prevCart) =>
+      prevCart.map((item) =>
+        item.id === id ? { ...item, quantity: item.quantity + delta } : item
+      )
+    );
+  };
+
+  const handleRemoveFromCart = (id: number) => {
+    setCart((prevCart) => prevCart.filter((item) => item.id !== id));
+  };
+
   const handleSearch = (newKeyword: string) => {
     setKeyword(newKeyword);
   };
 
   const totalItems = cart.reduce((sum, item) => sum + item.quantity, 0);
 
-  const filteredTracks = TRACKS.filter((track) => {
-    const matchKw = !keyword || track.title.toLowerCase().includes(keyword.toLowerCase());
-    const matchCat = activeCategory === null || track.category === activeCategory;
-    return matchKw && matchCat;
-  });
-
   return (
     <div className="d-flex flex-column min-vh-100 pb-5 pb-lg-0">
-      {/* 1. Header Navigation */}
-      <Header cartCount={totalItems} onSearch={handleSearch} onNavigate={setView} view={view} />
+      <Header 
+        cartCount={totalItems} 
+        onSearch={handleSearch} 
+        isAuthenticated={isAuthenticated} 
+        onLoginToggle={() => setIsAuthenticated(!isAuthenticated)} 
+      />
       
       <main className="flex-grow-1 w-100 pt-5 mt-4">
-        {view === 'admin' ? (
-          <AdminTable initialTracks={TRACKS} />
-        ) : (
-          <Container fluid="xxl">
-            {/* 2. Hero Banner */}
-            <Banner />
-            
-            {/* 3. Category List bọc trong SectionWrapper */}
-            <SectionWrapper title="Browse Categories">
-              <CategoryList 
-                categories={CATEGORIES} 
-                activeCategory={activeCategory} 
-                onSelectCategory={setActiveCategory} 
-              />
-            </SectionWrapper>
-            
-            {/* 4. Grid hiển thị nhạc bọc trong SectionWrapper */}
-            <SectionWrapper 
-              title="Trending Playlists" 
-              subtitle="Top tracks curated just for you this week"
-            >
-              <TrackGrid 
-                tracks={filteredTracks} 
-                onPlay={handlePlay} 
-                onAddToCart={handleAddToCart} 
-              />
-            </SectionWrapper>
-          </Container>
-        )}
+        <Routes>
+          <Route path="/" element={<HomePage keyword={keyword} onAddToCart={handleAddToCart} />} />
+          <Route path="/tracks" element={<TrackListPage keyword={keyword} onAddToCart={handleAddToCart} />} />
+          <Route path="/tracks/:id" element={<TrackDetailPage onAddToCart={handleAddToCart} />} />
+          <Route path="/cart" element={
+            <CartPage 
+              cartItems={cart} 
+              onUpdateQuantity={handleUpdateQuantity} 
+              onRemove={handleRemoveFromCart} 
+            />
+          } />
+          <Route path="/admin/tracks" element={
+            <ProtectedRoute isAuthenticated={isAuthenticated}>
+              <AdminTable initialTracks={TRACKS} />
+            </ProtectedRoute>
+          } />
+          <Route path="*" element={<NotFoundPage />} />
+        </Routes>
       </main>
       
-      {/* 5. Footer & Player Bar */}
       <Footer />
     </div>
   );

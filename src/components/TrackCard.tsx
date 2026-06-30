@@ -1,5 +1,6 @@
 import React from 'react';
 import { Card, Badge, Button } from 'react-bootstrap';
+import { useNavigate } from 'react-router-dom';
 
 export interface Track {
   id: number;
@@ -19,15 +20,20 @@ interface TrackCardProps {
 }
 
 const TrackCard: React.FC<TrackCardProps> = ({ track, onPlay, onAddToCart }) => {
+  const navigate = useNavigate();
   const isOutOfStock = track.stock === 0;
   const hasDiscount = track.originalPrice > track.price;
   const discountPercent = hasDiscount 
     ? Math.round(((track.originalPrice - track.price) / track.originalPrice) * 100) 
     : 0;
 
+  const handleGoToDetail = () => {
+    navigate(`/tracks/${track.id}`);
+  };
+
   return (
     <Card className={`h-100 shadow-sm auralis-card border-0 text-white ${isOutOfStock ? 'opacity-75' : ''}`}>
-      <div className="position-relative overflow-hidden group">
+      <div className="position-relative overflow-hidden group" style={{ cursor: 'pointer' }} onClick={handleGoToDetail}>
         <Card.Img 
           variant="top" 
           src={track.image} 
@@ -45,14 +51,17 @@ const TrackCard: React.FC<TrackCardProps> = ({ track, onPlay, onAddToCart }) => 
           </Badge>
         )}
 
-        {/* Hover overlay for Play button (Optional pure CSS or simple absolute) */}
+        {/* Hover overlay for Play button */}
         {!isOutOfStock && (
           <div className="position-absolute top-50 start-50 translate-middle">
             <Button 
               variant="primary" 
               className="rounded-circle p-3 d-flex align-items-center justify-content-center shadow"
               style={{ width: '48px', height: '48px', opacity: 0.9 }}
-              onClick={() => onPlay(track)}
+              onClick={(e) => {
+                e.stopPropagation(); // Ngăn sự kiện click Card
+                onPlay(track);
+              }}
             >
               <span className="material-symbols-outlined" style={{ fontVariationSettings: "'FILL' 1" }}>play_arrow</span>
             </Button>
@@ -66,7 +75,13 @@ const TrackCard: React.FC<TrackCardProps> = ({ track, onPlay, onAddToCart }) => 
             <Badge bg="info" className="text-dark fw-bold">{track.category}</Badge>
           </div>
         )}
-        <Card.Title className="fs-6 fw-bold text-truncate mb-1">{track.title}</Card.Title>
+        <Card.Title 
+          className="fs-6 fw-bold text-truncate mb-1" 
+          style={{ cursor: 'pointer' }}
+          onClick={handleGoToDetail}
+        >
+          {track.title}
+        </Card.Title>
         <Card.Subtitle className="text-secondary small mb-3 text-truncate">
           {track.artist}
         </Card.Subtitle>
