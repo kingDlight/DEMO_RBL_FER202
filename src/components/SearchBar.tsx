@@ -43,7 +43,9 @@ const SearchBar = forwardRef<HTMLInputElement, SearchBarProps>(({ onSearch }, re
             placeholder="Search tracks..."
             value={keyword}
             onChange={(e) => {
-              setKeyword(e.target.value);
+              const val = e.target.value;
+              setKeyword(val);
+              onSearch(val);
               if (error) setError('');
             }}
             className={`bg-transparent border-0 ${isDark ? 'text-light' : 'text-dark'} shadow-none`}
