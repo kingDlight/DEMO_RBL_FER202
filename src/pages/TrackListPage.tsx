@@ -7,58 +7,41 @@ import SearchBar from '../components/SearchBar';
 import { CATEGORIES } from '../data/tracks';
 import type { Track } from '../components/TrackCard';
 import { useCart } from '../context/CartContext';
-import { getTracks } from '../services/trackService';
+import { useFetch } from '../hooks/useFetch';
+import { useDebounce } from '../hooks/useDebounce';
 
 const TrackListPage: React.FC = () => {
   const [activeCategory, setActiveCategory] = useState<string | null>(null);
   const [keyword, setKeyword] = useState<string>('');
-  const [loading, setLoading] = useState<boolean>(true);
-  const [error, setError] = useState<string | null>(null);
-  const [tracks, setTracks] = useState<Track[]>([]);
+  const debouncedKeyword = useDebounce(keyword, 400);
   
   const searchInputRef = useRef<HTMLInputElement>(null);
   const { totalItems } = useCart();
 
-  // Effect 1: Fetch tracks from API
-  useEffect(() => {
-    const fetchTracks = async () => {
-      try {
-        setLoading(true);
-        setError(null);
-        const data = await getTracks();
-        setTracks(data);
-      } catch (err) {
-        setError('Failed to fetch tracks. Please check if the server is running.');
-      } finally {
-        setLoading(false);
-      }
-    };
-    
-    fetchTracks();
-  }, []);
+  // Prepare params for json-server (filtering on backend)
+  const queryParams: Record<string, any> = {};
+  if (debouncedKeyword) queryParams.q = debouncedKeyword;
+  if (activeCategory) queryParams.category = activeCategory;
 
-  // Effect 2: Update document title
+  // Custom Hook replaces useEffect + Axios logic
+  const { data: tracks, loading, error } = useFetch<Track[]>('/tracks', queryParams);
+
+  // Effect 1: Update document title
   useEffect(() => {
-    const originalTitle = 'Auralis Bookstore'; // We keep the original title logic
+    const originalTitle = 'Auralis Bookstore';
     document.title = totalItems > 0 ? `(${totalItems}) Auralis Library` : originalTitle;
     
     return () => { 
-      document.title = originalTitle; // Cleanup when unmounting
+      document.title = originalTitle;
     };
   }, [totalItems]);
 
-  // Effect 3: Auto-focus search input after loading
+  // Effect 2: Auto-focus search input after loading
   useEffect(() => {
     if (!loading && searchInputRef.current) {
       searchInputRef.current.focus();
     }
   }, [loading]);
-
-  const filteredTracks = tracks.filter((track) => {
-    const matchKw = !keyword || track.title.toLowerCase().includes(keyword.toLowerCase());
-    const matchCat = activeCategory === null || track.category === activeCategory;
-    return matchKw && matchCat;
-  });
 
   const handlePlay = (track: Track) => {
     console.log(`Đang phát bài hát: ${track.title} - ${track.artist}`);
@@ -93,11 +76,11 @@ const TrackListPage: React.FC = () => {
           </div>
         ) : error ? (
           <div className="alert alert-danger" role="alert">
-            {error}
+            Failed to fetch tracks. Please check if json-server is running.
           </div>
         ) : (
           <TrackGrid 
-            tracks={filteredTracks} 
+            tracks={tracks || []} 
             onPlay={handlePlay} 
           />
         )}

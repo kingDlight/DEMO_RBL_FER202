@@ -2,6 +2,7 @@ import React from 'react';
 import { Card, Badge, Button } from 'react-bootstrap';
 import { useNavigate } from 'react-router-dom';
 import { useCart } from '../context/CartContext';
+import { useLocalStorage } from '../hooks/useLocalStorage';
 
 export interface Track {
   id: number;
@@ -22,6 +23,9 @@ interface TrackCardProps {
 const TrackCard: React.FC<TrackCardProps> = ({ track, onPlay }) => {
   const navigate = useNavigate();
   const { addToCart } = useCart();
+  const [wishlist, setWishlist] = useLocalStorage<number[]>('auralis_wishlist', []);
+  
+  const isLiked = wishlist.includes(track.id);
   const isOutOfStock = track.stock === 0;
   const hasDiscount = track.originalPrice > track.price;
   const discountPercent = hasDiscount 
@@ -30,6 +34,15 @@ const TrackCard: React.FC<TrackCardProps> = ({ track, onPlay }) => {
 
   const handleGoToDetail = () => {
     navigate(`/tracks/${track.id}`);
+  };
+
+  const toggleWishlist = (e: React.MouseEvent) => {
+    e.stopPropagation(); // Ngăn sự kiện click Card
+    if (isLiked) {
+      setWishlist(wishlist.filter(id => id !== track.id));
+    } else {
+      setWishlist([...wishlist, track.id]);
+    }
   };
 
   return (
@@ -51,6 +64,18 @@ const TrackCard: React.FC<TrackCardProps> = ({ track, onPlay }) => {
             -{discountPercent}%
           </Badge>
         )}
+
+        {/* Wishlist Button */}
+        <Button
+          variant="light"
+          className="position-absolute top-0 end-0 m-2 z-1 rounded-circle p-2 d-flex align-items-center justify-content-center shadow-sm"
+          style={{ width: '36px', height: '36px', opacity: 0.9 }}
+          onClick={toggleWishlist}
+        >
+          <span className="material-symbols-outlined text-danger" style={{ fontVariationSettings: isLiked ? "'FILL' 1" : "'FILL' 0" }}>
+            favorite
+          </span>
+        </Button>
 
         {/* Hover overlay for Play button */}
         {!isOutOfStock && (
