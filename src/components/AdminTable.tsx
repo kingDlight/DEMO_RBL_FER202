@@ -1,14 +1,14 @@
-import React, { useState } from 'react';
-import { Table, Button, Modal, Form, Badge, Container } from 'react-bootstrap';
+import React, { useState, useEffect } from 'react';
+import { Table, Button, Modal, Form, Badge, Container, Spinner, Alert } from 'react-bootstrap';
 import type { Track } from './TrackCard';
 import { useTheme } from '../context/ThemeContext';
+import { getTracks, createTrack, updateTrack, deleteTrack } from '../services/trackService';
 
-interface AdminTableProps {
-  initialTracks: Track[];
-}
-
-const AdminTable: React.FC<AdminTableProps> = ({ initialTracks }) => {
-  const [tracks, setTracks] = useState<Track[]>(initialTracks);
+const AdminTable: React.FC = () => {
+  const [tracks, setTracks] = useState<Track[]>([]);
+  const [loading, setLoading] = useState(true);
+  const [error, setError] = useState<string | null>(null);
+  
   const [showModal, setShowModal] = useState(false);
   const [isEditing, setIsEditing] = useState(false);
   const { isDark } = useTheme();
@@ -23,6 +23,23 @@ const AdminTable: React.FC<AdminTableProps> = ({ initialTracks }) => {
     stock: 0,
     category: 'Electronic'
   });
+
+  useEffect(() => {
+    fetchData();
+  }, []);
+
+  const fetchData = async () => {
+    try {
+      setLoading(true);
+      const data = await getTracks();
+      setTracks(data);
+      setError(null);
+    } catch (err) {
+      setError('Failed to load tracks. Please check json-server.');
+    } finally {
+      setLoading(false);
+    }
+  };
 
   const handleClose = () => {
     setShowModal(false);
@@ -42,21 +59,32 @@ const AdminTable: React.FC<AdminTableProps> = ({ initialTracks }) => {
     setShowModal(true);
   };
 
-  const handleDelete = (id: number) => {
+  const handleDelete = async (id: number) => {
     if (window.confirm("Are you sure you want to delete this track?")) {
-      setTracks(tracks.filter(t => t.id !== id));
+      try {
+        await deleteTrack(id);
+        setTracks(tracks.filter(t => t.id !== id));
+      } catch (err) {
+        alert('Failed to delete track. Please try again.');
+      }
     }
   };
 
-  const handleSubmit = (e: React.FormEvent) => {
+  const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
-    if (isEditing) {
-      setTracks(tracks.map(t => t.id === formData.id ? formData : t));
-    } else {
-      const newId = tracks.length > 0 ? Math.max(...tracks.map(t => t.id)) + 1 : 1;
-      setTracks([...tracks, { ...formData, id: newId }]);
+    try {
+      if (isEditing) {
+        const updated = await updateTrack(formData.id, formData);
+        setTracks(tracks.map(t => t.id === updated.id ? updated : t));
+      } else {
+        const { id, ...rest } = formData;
+        const created = await createTrack(rest as Omit<Track, 'id'>);
+        setTracks([...tracks, created]);
+      }
+      handleClose();
+    } catch (err) {
+      alert('Failed to save track.');
     }
-    handleClose();
   };
 
   return (
@@ -65,6 +93,8 @@ const AdminTable: React.FC<AdminTableProps> = ({ initialTracks }) => {
         <h2 className={isDark ? "text-light m-0" : "text-dark m-0"}>Admin Dashboard</h2>
         <Button variant="primary" onClick={handleShowAdd}>+ Add New Track</Button>
       </div>
+
+      {error && <Alert variant="danger">{error}</Alert>}
 
       <div className="table-responsive rounded border border-secondary">
         <Table striped bordered hover variant={isDark ? "dark" : undefined} className="m-0 align-middle">
@@ -81,31 +111,38 @@ const AdminTable: React.FC<AdminTableProps> = ({ initialTracks }) => {
             </tr>
           </thead>
           <tbody>
-            {tracks.map(track => (
-              <tr key={track.id}>
-                <td>{track.id}</td>
-                <td>
-                  <img src={track.image} alt={track.title} style={{ width: '40px', height: '40px', objectFit: 'cover', borderRadius: '4px' }} />
-                </td>
-                <td className="fw-semibold">{track.title}</td>
-                <td>{track.artist}</td>
-                <td><Badge bg="info">{track.category}</Badge></td>
-                <td>${track.price.toFixed(2)}</td>
-                <td>
-                  <Badge bg={track.stock > 0 ? 'success' : 'danger'}>
-                    {track.stock > 0 ? track.stock : 'Out of Stock'}
-                  </Badge>
-                </td>
-                <td>
-                  <Button variant={isDark ? "outline-light" : "outline-dark"} size="sm" className="me-2" onClick={() => handleShowEdit(track)}>Edit</Button>
-                  <Button variant="outline-danger" size="sm" onClick={() => handleDelete(track.id)}>Delete</Button>
+            {loading ? (
+              <tr>
+                <td colSpan={8} className="text-center py-5">
+                  <Spinner animation="border" variant="primary" />
                 </td>
               </tr>
-            ))}
-            {tracks.length === 0 && (
+            ) : tracks.length === 0 ? (
               <tr>
                 <td colSpan={8} className="text-center py-4 text-secondary">No tracks available.</td>
               </tr>
+            ) : (
+              tracks.map(track => (
+                <tr key={track.id}>
+                  <td>{track.id}</td>
+                  <td>
+                    <img src={track.image} alt={track.title} style={{ width: '40px', height: '40px', objectFit: 'cover', borderRadius: '4px' }} />
+                  </td>
+                  <td className="fw-semibold">{track.title}</td>
+                  <td>{track.artist}</td>
+                  <td><Badge bg="info">{track.category}</Badge></td>
+                  <td>${track.price.toFixed(2)}</td>
+                  <td>
+                    <Badge bg={track.stock > 0 ? 'success' : 'danger'}>
+                      {track.stock > 0 ? track.stock : 'Out of Stock'}
+                    </Badge>
+                  </td>
+                  <td>
+                    <Button variant={isDark ? "outline-light" : "outline-dark"} size="sm" className="me-2" onClick={() => handleShowEdit(track)}>Edit</Button>
+                    <Button variant="outline-danger" size="sm" onClick={() => handleDelete(track.id)}>Delete</Button>
+                  </td>
+                </tr>
+              ))
             )}
           </tbody>
         </Table>

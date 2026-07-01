@@ -9,7 +9,6 @@ import TrackListPage from './pages/TrackListPage';
 import TrackDetailPage from './pages/TrackDetailPage';
 import CartPage from './pages/CartPage';
 import NotFoundPage from './pages/NotFoundPage';
-import { TRACKS } from './data/tracks';
 
 const App: React.FC = () => {
   // Mock authentication state for ProtectedRoute demonstration
@@ -30,7 +29,7 @@ const App: React.FC = () => {
           <Route path="/cart" element={<CartPage />} />
           <Route path="/admin/tracks" element={
             <ProtectedRoute isAuthenticated={isAuthenticated}>
-              <AdminTable initialTracks={TRACKS} />
+              <AdminTable />
             </ProtectedRoute>
           } />
           <Route path="*" element={<NotFoundPage />} />

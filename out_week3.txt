@@ -1,0 +1,156 @@
+TRƯỜNG ĐẠI HỌC FPT
+KHOA CÔNG NGHỆ THÔNG TIN
+BÁO CÁO TUẦN 03
+Props & Component Communication
+Môn: Phát triển Ứng dụng Web với ReactJS (FER202)
+Project: ReadMore Bookstore — Nhà sách trực tuyến
+I. THÔNG TIN NHÓM
+Tên nhóm
+Idle Developer
+Mã lớp học phần
+SE20A05
+Giảng viên hướng dẫn
+TraLTB
+Link GitHub Repo
+https://github.com/fudn-traltb-su26/rbl-fer202-theotuan-idle_developer
+Tuần báo cáo
+Tuần 03 — Props & Component Communication
+Ngày nộp
+25/06/2026
+II. PHÂN CÔNG CÔNG VIỆC
+Ghi rõ nhiệm vụ từng thành viên và % hoàn thành. Cột Kết quả ghi "Đạt" / "Một phần" / "Chưa đạt".
+STT
+Họ và tên
+Nhiệm vụ được giao
+Kết quả thực hiện
+% HT
+1
+Nguyễn Trần Gia Bảo
+Refactor TrackCard.tsx (Chuyển data cứng thành Props, thêm logic tính % giảm giá, disable nút Play nếu hết stock)
+Đạt 
+100%
+2
+Lê Văn Minh Trí
+Refactor TrackGrid.tsx (Nhận mảng tracks qua Props, xử lý map render list và trạng thái mảng rỗng)
+Đạt
+100%
+3
+Nguyễn Duy Quang
+Refactor CategoryList.tsx (Nhận mảng categories qua Props, xóa bỏ mảng tĩnh bên trong component)
+Đạt
+100%
+4
+Huỳnh Minh Huân
+Viết SectionWrapper.tsx (Tạo generic layout component, tận dụng thuộc tính props.children để chứa content)
+Đạt
+100%
+5
+Đỗ Minh Gia Bảo
+Cập nhật App.tsx (Lifting state up: Gom data tĩnh lên App, truyền Props xuống component con)
+Đạt
+100%
+Người chủ trì tuần này:
+[Họ và tên thành viên]
+Link commit GitHub tuần này:
+[https://github.com/.../commits/...]
+III. NỘI DUNG ĐÃ THỰC HIỆN
+Chủ đề tuần 03: Truyền dữ liệu qua Props, props.children (generic wrapper), one-way data flow
+3.1. Danh sách công việc
+Đánh dấu cột Trạng thái: [x] = Xong  |  [~] = Một phần  |  [ ] = Chưa làm
+#
+Công việc cần thực hiện
+T.thái
+Người thực hiện
+1
+Viết TrackCard.tsx: Chuyển sang dùng Props, thêm logic % giảm giá và vô hiệu hóa nút Play
+[X]
+Nguyễn Trần Gia Bảo
+2
+Viết TrackGrid.tsx: Nhận dữ liệu mảng nhạc qua Props, xử lý giao diện khi không có bài hát
+[X]
+Trần Văn Minh Trí
+3
+Viết CategoryList.tsx: Render động danh sách danh mục thông qua Props
+[X]
+Nguyễn Duy Quang
+4
+Viết SectionWrapper.tsx: Tạo layout dùng chung ứng dụng props.children
+[X]
+Huỳnh Minh Huân
+5
+Cập nhật App.tsx: Đưa dữ liệu tĩnh lên trên cùng, phân phát Props xuống component con
+[X]
+Đỗ Minh Gia Bảo
+3.2. Mô tả chi tiết cách triển khai
+Mục tiêu trọng tâm: Củng cố và áp dụng khái niệm Luồng dữ liệu một chiều (One-way Data Flow) và Props trong React.
+Chi tiết các công việc đã thực hiện:
+Tối ưu hóa quản lý trạng thái (Lifting State Up):
+Tiến hành dọn dẹp toàn bộ dữ liệu tĩnh (hardcode) nằm rải rác ở các component con từ tuần 2.
+Gom tập trung dữ liệu lên component cha ở mức cao nhất là App.tsx.
+Thiết lập luồng phân phát dữ liệu từ App.tsx xuống các component con (TrackGrid, CategoryList, TrackCard) thông qua hệ thống Props.
+Tái sử dụng UI với Pattern "Wrapper Component":
+Tạo component mới SectionWrapper.tsx kết hợp sử dụng props.children.
+Kết quả: Tái sử dụng thành công cấu trúc layout (bao gồm tiêu đề, khoảng cách margin/padding, và màu nền) cho nhiều phân vùng nội dung khác nhau trên trang web, giúp loại bỏ hoàn toàn tình trạng lặp code (boilerplate HTML).
+Xử lý logic hiển thị tại Component con:
+Bổ sung các biểu thức logic tính toán trực tiếp vào component.
+Ví dụ điển hình: Tự động tính toán và hiển thị phần trăm giảm giá dựa trên sự chênh lệch giữa hai props được truyền vào là price và originalPrice.
+IV. KẾT QUẢ ĐẠT ĐƯỢC
+4.1. Kết quả kỹ thuật đạt được
+Mô tả ngắn từng kết quả đã hoàn thành trong tuần.
+Xóa bỏ hoàn toàn dữ liệu cứng (Lifting State Up): Đã gom thành công toàn bộ dữ liệu tĩnh lên component App.tsx và truyền xuống các component con bằng hệ thống Props một cách mượt mà, đúng chuẩn React. — [Chờ dán link file App.tsx vào đây]
+Tái sử dụng Layout Component: Áp dụng thành công kỹ thuật dùng props.children thông qua việc tạo và nhúng component SectionWrapper.tsx cho các vùng nội dung khác nhau trên trang chủ. — [Chờ dán link file SectionWrapper.tsx vào đây]
+Hiển thị giao diện động (Dynamic Rendering): Các component con (TrackCard, TrackGrid) đã tự động tính toán được logic (như % giảm giá) và phản hồi giao diện linh hoạt dựa trên mảng dữ liệu truyền vào. — [Chờ dán link file TrackCard.tsx vào đây]
+4.2. Screenshot / Demo kết quả
+Chèn ảnh chụp màn hình các tính năng đã hoàn thành (tối thiểu 2 ảnh). Ghi chú bên dưới mỗi ảnh.
+Hình 1: Cây thư mục React DevTools chứng minh dữ liệu Props (như mảng track, hàm onPlay) đã được truyền thành công từ App xuống TrackCard.
+Hình 2: Giao diện trang chủ hoàn thiện, các SectionWrapper hoạt động tốt. Thẻ nhạc hiển thị chính xác % giảm giá và trạng thái khóa nút dựa trên dữ liệu động truyền vào.
+V. CHECKLIST ĐẦU RA — TUẦN 03
+Đánh dấu ☑ vào cột "HT?" cho mỗi đầu ra đã hoàn thành. Ghi rõ file/folder/link lưu kết quả.
+#
+Yêu cầu đầu ra (từ TODO.md)
+HT?
+Vị trí lưu kết quả (file / folder / link)
+Ghi chú
+1
+Cập nhật App.tsx truyền đủ props xuống con
+[x]
+src/App.tsx
+Đã đưa data TRACKS & CATEGORIES lên App
+2
+Component dùng props.children
+[x]
+src/components/SectionWrapper.tsx
+Hoạt động bình thường
+3
+Các Child Components nhận đúng Props
+[x]
+src/components/
+Đã xóa toàn bộ data hardcode ở bên trong
+4
+Xử lý Empty State / Điều kiện logic
+[x]
+TrackCard.tsx & TrackGrid.tsx
+Đã code xong Disable nút bấm và check rỗng
+TỔNG SỐ ĐẦU RA HOÀN THÀNH
+4/4
+VI. HẠN CHẾ & LỖI GẶP PHẢI
+6.1. Bảng lỗi kỹ thuật
+Liệt kê chi tiết các lỗi đã gặp. Nếu chưa fix được, ghi "Chưa fix" ở cột Trạng thái.
+#
+Mô tả lỗi (copy error message nếu có)
+Nguyên nhân (đoán)
+Cách khắc phục
+T.thái
+1
+Lỗi TypeScript ở Console: "Type 'Track' is a type and must be imported using a type-only import"
+Cấu hình verbatimModuleSyntax của Vite trong file TS bắt buộc phải phân biệt khai báo Type và khai báo biến.
+Thêm chữ type vào khai báo: import type { Track } from './TrackCard';
+Đã fix 
+2
+Hàm handlePlay khi bấm vào nút Play chưa phát được nhạc thực tế.
+Do ứng dụng chưa thiết kế xong Audio Player dưới thanh Footer.
+Tạm thời dùng console.log() để in thông tin bài hát đang được chọn ra DevTools.
+Đã fix 
+6.2. Hạn chế về kiến thức & chất lượng
+Về kiến trúc: Hiện tại dữ liệu truyền đi (Props) đang phải đi qua nhiều tầng liên tiếp (từ App -> Grid -> Card). Nếu dự án sau này phình to ra có thể xảy ra tình trạng "Props Drilling" gây khó khăn cho việc đọc hiểu và bảo trì code. Nhóm dự định tìm hiểu thêm về Context API hoặc Redux cho các tuần sau.
+Về UI/UX: Chưa có nút "Play Tất Cả" cho một danh sách.

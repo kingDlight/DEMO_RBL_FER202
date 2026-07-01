@@ -1,0 +1,40 @@
+Tên nhóm | [Điền tên nhóm]
+Mã lớp học phần | [Mã lớp]
+Giảng viên hướng dẫn | [Tên giảng viên]
+Link GitHub Repo | [https://github.com/...]
+Tuần báo cáo | Tuần 04 — Xử lý Sự kiện & useState
+Ngày nộp | [dd/mm/yyyy]
+
+STT | Họ và tên | Nhiệm vụ được giao | Kết quả thực hiện | % HT
+1 | Nguyễn Trần Gia Bảo | Viết component SearchBar.tsx: controlled component, bind value={keyword} và onChange. Thêm validation min 2 ký tự, hiển thị error message, nút Clear. | Đạt  | 100%
+2 | Lê Văn Minh Trí | Thêm state cart[] vào App.tsx, implement handleAddToCart sử dụng phương pháp immutable update. Giải thích cách update mảng trong báo cáo. | Đạt | 100%
+3 | Nguyễn Duy Quang | Implement tính năng filter danh mục sử dụng useState(activeCategory) + derived state. Đổi màu nút danh mục đang được active. | Đạt | 100%
+4 | Huỳnh Minh Huân | Cập nhật Header.tsx, nhận prop cartCount và hiển thị số lượng item trên giỏ hàng (áp dụng lifting state up). | Đạt | 100%
+5 | Đỗ Minh Gia Bảo  | Implement derived state filteredTracks (kết hợp cả keyword và activeCategory). Tích hợp tất cả vào App.tsx, truyền props xuống các component con. | Đạt | 100%
+
+Người chủ trì tuần này: | [Họ và tên thành viên]
+Link commit GitHub tuần này: | [https://github.com/.../commits/...]
+
+# | Công việc cần thực hiện | T.thái | Người thực hiện
+1 | Viết SearchBar.jsx: controlled component, bind value={keyword} và onChange | [x] | Nguyễn Trần Gia Bảo
+2 | Thêm validation SearchBar: min 2 ký tự, hiển thị error message, nút Clear | [x] | Nguyễn Trần Gia Bảo
+3 | Thêm state cart[] vào App.jsx, implement handleAddToCart (immutable update) | [x] | Lê Văn Minh Trí
+4 | Lifting state: truyền handleSearch từ App xuống SearchBar qua props | [x] | Đỗ Minh Gia Bảo
+5 | Hiển thị totalItems trên Header (truyền qua props từ App) | [x] | Huỳnh Minh Huân
+6 | Implement filter theo danh mục dùng useState(activeCategory) + derived state | [x] | Nguyễn Duy Quang
+
+ Hình 1: Giao diện báo lỗi Validation của SearchBar (hiển thị tooltip đỏ khi nhập dưới 2 ký tự) và biểu tượng giỏ hàng trên Header đã cập nhật số lượng (số 1) thành công khi thêm bài hát.
+ Hình 2: Chức năng Filter danh mục hoạt động chính xác. Nút danh mục "Synthwave" được tô màu nhấn mạnh (active) và danh sách bài hát bên dưới đã tự động lọc, chỉ hiển thị các bài thuộc đúng thể loại được chọn.
+
+# | Yêu cầu đầu ra (từ TODO.md) | HT? | Vị trí lưu kết quả (file / folder / link) | Ghi chú
+1 | SearchBar.jsx là controlled component có validation (min 2 ký tự) và nút Clear | [x] | src/components/SearchBar.jsx | Đã xử lý CSS cho báo lỗi dạng Tooltip
+2 | Giỏ hàng (cart state) hoạt động: thêm sách, tăng số lượng với immutable update | [x] | src/App.jsx — hàm handleAddToCart dùng spread operator | Sử dụng toán tử Spread (...)
+3 | Filter danh mục: Click danh mục → chỉ hiện bài hát của danh mục đó | [x] | src/App.tsx (state activeCategory) | Tính toán danh sách lọc qua Derived State
+4 | Header hiển thị đúng số lượng item trong giỏ (lifting state up) | [x] | src/components/Header.jsx nhận cartCount qua props | Nhận prop cartCount từ App
+5 | Báo cáo giải thích tại sao phải dùng setState({...state}) thay vì state.key = value | [x] | docs/week04-immutable.md hoặc phần mô tả trong báo cáo này | Đã giải thích cơ chế Reference Equality
+ | TỔNG SỐ ĐẦU RA HOÀN THÀNH | 5/5 |  | 
+
+# | Mô tả lỗi (copy error message nếu có) | Nguyên nhân (đoán) | Cách khắc phục | T.thái
+1 | Chữ thông báo lỗi của SearchBar bị tràn dòng, làm xô lệch giao diện Banner | Thẻ span bị giới hạn chiều rộng bởi class w-full của SearchBar mẹ | Chuyển lỗi sang dạng Tooltip (absolute, whitespace-nowrap) với z-index cao hơn | Đã fix 
+2 | Khi thêm bài hát đã có trong giỏ, số lượng không tự cập nhật trên UI | Dùng lệnh cart.push() làm thay đổi mảng cũ nhưng không tạo ra mảng mới (React không re-render) | Đổi sang dùng setCart(prev => prev.map(...)) để clone ra mảng hoàn toàn mới | Đã fix
+

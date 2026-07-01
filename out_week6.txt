@@ -1,0 +1,33 @@
+Tên nhóm | [Điền tên nhóm]
+Mã lớp học phần | [Mã lớp]
+Giảng viên hướng dẫn | [Tên giảng viên]
+Link GitHub Repo | [https://github.com/...]
+Tuần báo cáo | Tuần 06 — Routing với React Router DOM
+Ngày nộp | [dd/mm/yyyy]
+STT | Họ và tên | Nhiệm vụ được giao | Kết quả thực hiện | % HT
+1 | [Họ tên] | [Mô tả nhiệm vụ cụ thể] | [Đạt / Một phần / Chưa đạt] | [___%]
+2 | [Họ tên] | [Mô tả nhiệm vụ cụ thể] | [Đạt / Một phần / Chưa đạt] | [___%]
+3 | [Họ tên] | [Mô tả nhiệm vụ cụ thể] | [Đạt / Một phần / Chưa đạt] | [___%]
+4 | [Họ tên] | [Mô tả nhiệm vụ cụ thể] | [Đạt / Một phần / Chưa đạt] | [___%]
+5 | [Họ tên] | [Mô tả nhiệm vụ cụ thể] | [Đạt / Một phần / Chưa đạt] | [___%]
+Người chủ trì tuần này: | [Họ và tên thành viên]
+Link commit GitHub tuần này: | [https://github.com/.../commits/...]
+# | Công việc cần thực hiện | T.thái | Người thực hiện
+1 | Bọc App trong BrowserRouter, khai báo Routes với ≥5 Route trong App.jsx | [ ] | [Tên SV]
+2 | Tạo các pages: HomePage, BookListPage, BookDetailPage, CartPage, NotFoundPage | [ ] | [Tên SV]
+3 | BookDetailPage.jsx dùng useParams() đọc :id từ URL /books/:id | [ ] | [Tên SV]
+4 | Viết ProtectedRoute.jsx, test redirect /admin/books khi chưa đăng nhập | [ ] | [Tên SV]
+5 | Update Header: dùng NavLink thay <a>, highlight link đang active | [ ] | [Tên SV]
+6 | Nút "Quay lại" trong BookDetailPage dùng useNavigate(-1) | [ ] | [Tên SV]
+[Chèn Screenshot 1 tại đây] Hình 1: [Mô tả ngắn] | [Chèn Screenshot 2 tại đây] Hình 2: [Mô tả ngắn]
+# | Yêu cầu đầu ra (từ TODO.md) | HT? | Vị trí lưu kết quả (file / folder / link) | Ghi chú
+1 | App.jsx có BrowserRouter với ≥5 routes (/, /books, /books/:id, /cart, /admin/books, /*) | [ ] | src/App.jsx | [...]
+2 | BookDetailPage.jsx dùng useParams() hiển thị đúng sách theo :id | [ ] | src/pages/BookDetailPage.jsx | [...]
+3 | ProtectedRoute redirect về / khi chưa đăng nhập | [ ] | src/components/ProtectedRoute.jsx | [...]
+4 | Header NavLink highlight đúng link đang active | [ ] | src/components/Header.jsx — kiểm tra class "active" trong DevTools | [...]
+5 | Sơ đồ Route Map của project (route tree diagram) | [ ] | docs/week06-routemap.png hoặc link draw.io | [...]
+ | TỔNG SỐ ĐẦU RA HOÀN THÀNH | ___/5 |  | 
+# | Mô tả lỗi (copy error message nếu có) | Nguyên nhân (đoán) | Cách khắc phục | T.thái
+1 | [Mô tả lỗi cụ thể] | [Phân tích nguyên nhân] | [Bước đã làm để fix] | [Đã fix / Chưa fix]
+2 | [...] | [...] | [...] | [...]
+3 | [...] | [...] | [...] | [...]

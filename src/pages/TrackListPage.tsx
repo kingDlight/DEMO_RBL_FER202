@@ -4,27 +4,37 @@ import SectionWrapper from '../components/SectionWrapper';
 import CategoryList from '../components/CategoryList';
 import TrackGrid from '../components/TrackGrid';
 import SearchBar from '../components/SearchBar';
-import { CATEGORIES, TRACKS } from '../data/tracks';
+import { CATEGORIES } from '../data/tracks';
 import type { Track } from '../components/TrackCard';
 import { useCart } from '../context/CartContext';
+import { getTracks } from '../services/trackService';
 
 const TrackListPage: React.FC = () => {
   const [activeCategory, setActiveCategory] = useState<string | null>(null);
   const [keyword, setKeyword] = useState<string>('');
   const [loading, setLoading] = useState<boolean>(true);
+  const [error, setError] = useState<string | null>(null);
   const [tracks, setTracks] = useState<Track[]>([]);
   
   const searchInputRef = useRef<HTMLInputElement>(null);
   const { totalItems } = useCart();
 
-  // Effect 1: Fake API call
+  // Effect 1: Fetch tracks from API
   useEffect(() => {
-    setLoading(true);
-    const timer = setTimeout(() => {
-      setTracks(TRACKS);
-      setLoading(false);
-    }, 800);
-    return () => clearTimeout(timer); // Cleanup function
+    const fetchTracks = async () => {
+      try {
+        setLoading(true);
+        setError(null);
+        const data = await getTracks();
+        setTracks(data);
+      } catch (err) {
+        setError('Failed to fetch tracks. Please check if the server is running.');
+      } finally {
+        setLoading(false);
+      }
+    };
+    
+    fetchTracks();
   }, []);
 
   // Effect 2: Update document title
@@ -80,6 +90,10 @@ const TrackListPage: React.FC = () => {
           <div className="d-flex justify-content-center align-items-center py-5">
             <Spinner animation="border" variant="primary" />
             <span className="ms-3 text-secondary">Loading tracks...</span>
+          </div>
+        ) : error ? (
+          <div className="alert alert-danger" role="alert">
+            {error}
           </div>
         ) : (
           <TrackGrid 
