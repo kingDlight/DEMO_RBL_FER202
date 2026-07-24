@@ -1,0 +1,13 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100">
+  <circle cx="50" cy="50" r="42" fill="none" stroke="#7c3aed" stroke-width="5" stroke-dasharray="10 8" />
+  
+  <!-- Right and Bottom (Secondary - Green) -->
+  <path d="M 74.7 25.3 A 35 35 0 0 1 74.7 74.7 A 35 35 0 0 1 25.3 74.7" fill="none" stroke="#22c55e" stroke-width="3" />
+  
+  <!-- Top (Primary - White/Light) -->
+  <path d="M 25.3 25.3 A 35 35 0 0 1 74.7 25.3" fill="none" stroke="#f8fafc" stroke-width="3" />
+  
+  <circle cx="50" cy="50" r="26" fill="#334155" />
+  
+  <polygon points="43,35 43,65 65,50" fill="#f8fafc" />
+</svg>

@@ -1,0 +1,222 @@
+{
+  "songs": [
+    {
+      "id": "1",
+      "title": "Midnight City",
+      "artistId": "1",
+      "artist": "M83",
+      "albumId": "1",
+      "album": "Hurry Up, We're Dreaming",
+      "duration": "4:03",
+      "cover": "https://placehold.co/300x300/1e1b4b/white?text=Midnight+City",
+      "genre": "Pop",
+      "trending": true
+    },
+    {
+      "id": "2",
+      "title": "Starboy",
+      "artistId": "2",
+      "artist": "The Weeknd",
+      "albumId": "2",
+      "album": "Starboy",
+      "duration": "3:50",
+      "cover": "https://placehold.co/300x300/4c1d95/white?text=Starboy",
+      "genre": "Pop",
+      "trending": true
+    },
+    {
+      "id": "3",
+      "title": "Save Your Tears",
+      "artistId": "2",
+      "artist": "The Weeknd",
+      "albumId": "3",
+      "album": "After Hours",
+      "duration": "3:35",
+      "cover": "https://placehold.co/300x300/4c1d95/white?text=After+Hours",
+      "genre": "Pop",
+      "trending": false
+    },
+    {
+      "id": "4",
+      "title": "Blinding Lights",
+      "artistId": "2",
+      "artist": "The Weeknd",
+      "albumId": "3",
+      "album": "After Hours",
+      "duration": "3:20",
+      "cover": "https://placehold.co/300x300/4c1d95/white?text=After+Hours",
+      "genre": "Pop",
+      "trending": true
+    },
+    {
+      "id": "5",
+      "title": "Levitating",
+      "artistId": "3",
+      "artist": "Dua Lipa",
+      "albumId": "4",
+      "album": "Future Nostalgia",
+      "duration": "3:23",
+      "cover": "https://placehold.co/300x300/ec4899/white?text=Future+Nostalgia",
+      "genre": "Pop",
+      "trending": true
+    },
+    {
+      "id": "6",
+      "title": "Don't Start Now",
+      "artistId": "3",
+      "artist": "Dua Lipa",
+      "albumId": "4",
+      "album": "Future Nostalgia",
+      "duration": "3:03",
+      "cover": "https://placehold.co/300x300/ec4899/white?text=Future+Nostalgia",
+      "genre": "Pop",
+      "trending": false
+    },
+    {
+      "id": "7",
+      "title": "Shape of You",
+      "artistId": "4",
+      "artist": "Ed Sheeran",
+      "albumId": "5",
+      "album": "Divide",
+      "duration": "3:53",
+      "cover": "https://placehold.co/300x300/0ea5e9/white?text=Divide",
+      "genre": "Pop",
+      "trending": false
+    },
+    {
+      "id": "8",
+      "title": "Perfect",
+      "artistId": "4",
+      "artist": "Ed Sheeran",
+      "albumId": "5",
+      "album": "Divide",
+      "duration": "4:23",
+      "cover": "https://placehold.co/300x300/0ea5e9/white?text=Divide",
+      "genre": "Pop",
+      "trending": false
+    }
+  ],
+  "artists": [
+    {
+      "id": "1",
+      "name": "M83",
+      "genre": "Pop",
+      "monthlyListeners": "12,000,000",
+      "avatar": "https://placehold.co/300x300/1e1b4b/white?text=M83",
+      "verified": true,
+      "followers": "5M"
+    },
+    {
+      "id": "2",
+      "name": "The Weeknd",
+      "genre": "Pop",
+      "monthlyListeners": "105,000,000",
+      "avatar": "https://placehold.co/300x300/4c1d95/white?text=Weeknd",
+      "verified": true,
+      "followers": "70M"
+    },
+    {
+      "id": "3",
+      "name": "Dua Lipa",
+      "genre": "Pop",
+      "monthlyListeners": "75,000,000",
+      "avatar": "https://placehold.co/300x300/ec4899/white?text=Dua+Lipa",
+      "verified": true,
+      "followers": "40M"
+    },
+    {
+      "id": "4",
+      "name": "Ed Sheeran",
+      "genre": "Pop",
+      "monthlyListeners": "80,000,000",
+      "avatar": "https://placehold.co/300x300/0ea5e9/white?text=Ed",
+      "verified": true,
+      "followers": "110M"
+    }
+  ],
+  "albums": [
+    {
+      "id": "1",
+      "title": "Hurry Up, We're Dreaming",
+      "artistId": "1",
+      "artist": "M83",
+      "releaseYear": "2011",
+      "cover": "https://placehold.co/300x300/1e1b4b/white?text=Midnight+City"
+    },
+    {
+      "id": "2",
+      "title": "Starboy",
+      "artistId": "2",
+      "artist": "The Weeknd",
+      "releaseYear": "2016",
+      "cover": "https://placehold.co/300x300/4c1d95/white?text=Starboy"
+    },
+    {
+      "id": "3",
+      "title": "After Hours",
+      "artistId": "2",
+      "artist": "The Weeknd",
+      "releaseYear": "2020",
+      "cover": "https://placehold.co/300x300/4c1d95/white?text=After+Hours"
+    },
+    {
+      "id": "4",
+      "title": "Future Nostalgia",
+      "artistId": "3",
+      "artist": "Dua Lipa",
+      "releaseYear": "2020",
+      "cover": "https://placehold.co/300x300/ec4899/white?text=Future+Nostalgia"
+    },
+    {
+      "id": "5",
+      "title": "Divide",
+      "artistId": "4",
+      "artist": "Ed Sheeran",
+      "releaseYear": "2017",
+      "cover": "https://placehold.co/300x300/0ea5e9/white?text=Divide"
+    }
+  ],
+  "users": [
+    {
+      "id": "1",
+      "username": "admin",
+      "password": "password123",
+      "name": "Auralis User",
+      "avatar": "https://placehold.co/100x100/7c3aed/white?text=U",
+      "favorites": [],
+      "recentlyPlayed": [
+        {
+          "id": "zjh0YzpHPA0",
+          "title": "Lanterns",
+          "artist": "Xomu",
+          "duration": "3:20",
+          "image": "data:image/svg+xml,%0A%20%20%20%20%3Csvg%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20width%3D%22600%22%20height%3D%22600%22%20viewBox%3D%220%200%20600%20600%22%3E%0A%20%20%20%20%20%20%3Cdefs%3E%0A%20%20%20%20%20%20%20%20%3CradialGradient%20id%3D%22glow%22%20cx%3D%2265%25%22%20cy%3D%2225%25%22%20r%3D%2270%25%22%3E%0A%20%20%20%20%20%20%20%20%20%20%3Cstop%20offset%3D%220%22%20stop-color%3D%22%2322c55e%22%20stop-opacity%3D%220.95%22%2F%3E%0A%20%20%20%20%20%20%20%20%20%20%3Cstop%20offset%3D%220.45%22%20stop-color%3D%22%237c3aed%22%20stop-opacity%3D%220.55%22%2F%3E%0A%20%20%20%20%20%20%20%20%20%20%3Cstop%20offset%3D%221%22%20stop-color%3D%22%23100d16%22%20stop-opacity%3D%221%22%2F%3E%0A%20%20%20%20%20%20%20%20%3C%2FradialGradient%3E%0A%20%20%20%20%20%20%20%20%3ClinearGradient%20id%3D%22wave%22%20x1%3D%220%22%20x2%3D%221%22%20y1%3D%220%22%20y2%3D%221%22%3E%0A%20%20%20%20%20%20%20%20%20%20%3Cstop%20offset%3D%220%22%20stop-color%3D%22%237c3aed%22%2F%3E%0A%20%20%20%20%20%20%20%20%20%20%3Cstop%20offset%3D%221%22%20stop-color%3D%22%2322c55e%22%2F%3E%0A%20%20%20%20%20%20%20%20%3C%2FlinearGradient%3E%0A%20%20%20%20%20%20%3C%2Fdefs%3E%0A%20%20%20%20%20%20%3Crect%20width%3D%22600%22%20height%3D%22600%22%20fill%3D%22url(%23glow)%22%2F%3E%0A%20%20%20%20%20%20%3Cpath%20d%3D%22M55%20365%20C140%20290%20205%20455%20295%20365%20S465%20292%20545%20365%22%20fill%3D%22none%22%20stroke%3D%22url(%23wave)%22%20stroke-width%3D%2213%22%20stroke-linecap%3D%22round%22%20opacity%3D%220.9%22%2F%3E%0A%20%20%20%20%20%20%3Cpath%20d%3D%22M65%20410%20C160%20330%20225%20500%20315%20410%20S475%20335%20535%20410%22%20fill%3D%22none%22%20stroke%3D%22%23ffffff%22%20stroke-width%3D%223%22%20stroke-linecap%3D%22round%22%20opacity%3D%220.28%22%2F%3E%0A%20%20%20%20%20%20%3Ccircle%20cx%3D%22468%22%20cy%3D%22118%22%20r%3D%2270%22%20fill%3D%22%2322c55e%22%20opacity%3D%220.2%22%2F%3E%0A%20%20%20%20%20%20%3Ccircle%20cx%3D%22126%22%20cy%3D%22125%22%20r%3D%2238%22%20fill%3D%22%237c3aed%22%20opacity%3D%220.28%22%2F%3E%0A%20%20%20%20%20%20%3Ctext%20x%3D%2254%22%20y%3D%22500%22%20fill%3D%22%23f4efff%22%20font-family%3D%22Inter%2C%20Arial%2C%20sans-serif%22%20font-size%3D%2236%22%20font-weight%3D%22800%22%3ELanterns%3C%2Ftext%3E%0A%20%20%20%20%20%20%3Ctext%20x%3D%2256%22%20y%3D%22540%22%20fill%3D%22%23d8cfeb%22%20font-family%3D%22Inter%2C%20Arial%2C%20sans-serif%22%20font-size%3D%2222%22%20font-weight%3D%22600%22%3EXomu%3C%2Ftext%3E%0A%20%20%20%20%3C%2Fsvg%3E",
+          "audioUrl": "/music/Lanterns%20-%20Xomu.mp3"
+        }
+      ],
+      "playlists": [
+        {
+          "id": "7tugjtphi",
+          "title": "ssc",
+          "description": "User created playlist",
+          "cover": "https://placehold.co/300x300/4f46e5/white?text=ssc",
+          "songCount": 0,
+          "tracks": []
+        }
+      ]
+    },
+    {
+      "name": "HMSFLASH",
+      "username": "HMSFLASH",
+      "password": "Thanthanh?!!!!?",
+      "avatar": "https://placehold.co/100x100/7c3aed/white?text=H",
+      "favorites": [],
+      "recentlyPlayed": [],
+      "playlists": [],
+      "id": "GuNyMMjZnio"
+    }
+  ],
+  "tracks": [],
+  "$schema": "./node_modules/json-server/schema.json"
+}

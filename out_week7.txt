@@ -1,0 +1,75 @@
+TRƯỜNG ĐẠI HỌC FPT
+KHOA CÔNG NGHỆ THÔNG TIN
+BÁO CÁO TUẦN 07
+Built-in Hooks Nâng cao
+Môn: Phát triển Ứng dụng Web với ReactJS (FER202)
+Project: ReadMore Bookstore — Nhà sách trực tuyến
+I. THÔNG TIN NHÓM
+II. PHÂN CÔNG CÔNG VIỆC
+Ghi rõ nhiệm vụ từng thành viên và % hoàn thành. Cột Kết quả ghi "Đạt" / "Một phần" / "Chưa đạt".
+III. NỘI DUNG ĐÃ THỰC HIỆN
+Chủ đề tuần 07: useEffect (side effects, cleanup, dependency array), useContext + createContext, useRef
+3.1. Danh sách công việc
+Đánh dấu cột Trạng thái: [x] = Xong  |  [~] = Một phần  |  [ ] = Chưa làm
+3.2. Mô tả chi tiết cách triển khai
+Giải thích cách nhóm tiếp cận và thực hiện các công việc chính. Tối thiểu 150 từ.
+[Thành viên phụ trách điền vào đây: mô tả approach đã chọn, lý do chọn, khó khăn gặp phải và cách giải quyết...]
+[...]
+IV. KẾT QUẢ ĐẠT ĐƯỢC
+4.1. Kết quả kỹ thuật đạt được
+Mô tả ngắn từng kết quả đã hoàn thành trong tuần.
+[Kết quả 1: mô tả cụ thể — thêm link file/commit làm dẫn chứng]
+[Kết quả 2: mô tả cụ thể — thêm link file/commit làm dẫn chứng]
+[Kết quả 3: mô tả cụ thể — thêm link file/commit làm dẫn chứng]
+4.2. Screenshot / Demo kết quả
+Chèn ảnh chụp màn hình các tính năng đã hoàn thành (tối thiểu 2 ảnh). Ghi chú bên dưới mỗi ảnh.
+V. CHECKLIST ĐẦU RA — TUẦN 07
+Đánh dấu ☑ vào cột "HT?" cho mỗi đầu ra đã hoàn thành. Ghi rõ file/folder/link lưu kết quả.
+VI. HẠN CHẾ & LỖI GẶP PHẢI
+6.1. Bảng lỗi kỹ thuật
+Liệt kê chi tiết các lỗi đã gặp. Nếu chưa fix được, ghi "Chưa fix" ở cột Trạng thái.
+6.2. Hạn chế về kiến thức & chất lượng
+[Phần lý thuyết tuần này nhóm chưa nắm vững:]
+[Tính năng nào chưa hoàn thiện, UI/UX còn thiếu sót:]
+[Câu hỏi cần hỏi giảng viên trong buổi học tiếp theo:]
+---TABLES---
+Tên nhóm | [Điền tên nhóm]
+Mã lớp học phần | [Mã lớp]
+Giảng viên hướng dẫn | [Tên giảng viên]
+Link GitHub Repo | [https://github.com/...]
+Tuần báo cáo | Tuần 07 — Built-in Hooks Nâng cao
+Ngày nộp | [dd/mm/yyyy]
+
+STT | Họ và tên | Nhiệm vụ được giao | Kết quả thực hiện | % HT
+1 | [Họ tên] | [Mô tả nhiệm vụ cụ thể] | [Đạt / Một phần / Chưa đạt] | [___%]
+2 | [Họ tên] | [Mô tả nhiệm vụ cụ thể] | [Đạt / Một phần / Chưa đạt] | [___%]
+3 | [Họ tên] | [Mô tả nhiệm vụ cụ thể] | [Đạt / Một phần / Chưa đạt] | [___%]
+4 | [Họ tên] | [Mô tả nhiệm vụ cụ thể] | [Đạt / Một phần / Chưa đạt] | [___%]
+5 | [Họ tên] | [Mô tả nhiệm vụ cụ thể] | [Đạt / Một phần / Chưa đạt] | [___%]
+
+Người chủ trì tuần này: | [Họ và tên thành viên]
+Link commit GitHub tuần này: | [https://github.com/.../commits/...]
+
+# | Công việc cần thực hiện | T.thái | Người thực hiện
+1 | Tạo CartContext.jsx: createContext, CartProvider, custom hook useCart() | [ ] | [Tên SV]
+2 | Bọc App trong CartProvider trong main.jsx, refactor Header và BookCard dùng useCart() | [ ] | [Tên SV]
+3 | useEffect fetch dữ liệu mock khi component mount (dependency array = []) | [ ] | [Tên SV]
+4 | useEffect cập nhật document.title theo totalItems (có cleanup) | [ ] | [Tên SV]
+5 | useRef: auto-focus search input sau khi dữ liệu tải xong (không trigger re-render) | [ ] | [Tên SV]
+6 | Tạo ThemeContext.jsx: toggle dark/light, lưu vào localStorage | [ ] | [Tên SV]
+
+[Chèn Screenshot 1 tại đây] Hình 1: [Mô tả ngắn] | [Chèn Screenshot 2 tại đây] Hình 2: [Mô tả ngắn]
+
+# | Yêu cầu đầu ra (từ TODO.md) | HT? | Vị trí lưu kết quả (file / folder / link) | Ghi chú
+1 | CartContext.jsx: addToCart, removeFromCart, totalItems hoạt động toàn app | [ ] | src/context/CartContext.jsx | [...]
+2 | ThemeContext.jsx: toggle dark/light mode | [ ] | src/context/ThemeContext.jsx | [...]
+3 | useEffect có cleanup function (clearTimeout hoặc reset document.title) | [ ] | src/pages/BookListPage.jsx — kiểm tra return () => {...} trong useEffect | [...]
+4 | useRef: search input tự động focus sau khi data load xong | [ ] | src/pages/BookListPage.jsx — searchInputRef.current.focus() | [...]
+5 | Báo cáo: bảng so sánh khi nào dùng useEffect / useContext / useRef | [ ] | Điền vào mục 3.2 (Mô tả chi tiết) của báo cáo này | [...]
+ | TỔNG SỐ ĐẦU RA HOÀN THÀNH | ___/5 |  | 
+
+# | Mô tả lỗi (copy error message nếu có) | Nguyên nhân (đoán) | Cách khắc phục | T.thái
+1 | [Mô tả lỗi cụ thể] | [Phân tích nguyên nhân] | [Bước đã làm để fix] | [Đã fix / Chưa fix]
+2 | [...] | [...] | [...] | [...]
+3 | [...] | [...] | [...] | [...]
+

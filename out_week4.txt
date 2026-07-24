@@ -1,0 +1,159 @@
+TRƯỜNG ĐẠI HỌC FPT
+KHOA CÔNG NGHỆ THÔNG TIN
+BÁO CÁO TUẦN 04
+Xử lý Sự kiện & useState
+Môn: Phát triển Ứng dụng Web với ReactJS (FER202)
+Project: ReadMore Bookstore — Nhà sách trực tuyến
+I. THÔNG TIN NHÓM
+Tên nhóm
+[Điền tên nhóm]
+Mã lớp học phần
+[Mã lớp]
+Giảng viên hướng dẫn
+[Tên giảng viên]
+Link GitHub Repo
+[https://github.com/...]
+Tuần báo cáo
+Tuần 04 — Xử lý Sự kiện & useState
+Ngày nộp
+[dd/mm/yyyy]
+II. PHÂN CÔNG CÔNG VIỆC
+Ghi rõ nhiệm vụ từng thành viên và % hoàn thành. Cột Kết quả ghi "Đạt" / "Một phần" / "Chưa đạt".
+STT
+Họ và tên
+Nhiệm vụ được giao
+Kết quả thực hiện
+% HT
+1
+[Họ tên]
+[Mô tả nhiệm vụ cụ thể]
+[Đạt / Một phần / Chưa đạt]
+[___%]
+2
+[Họ tên]
+[Mô tả nhiệm vụ cụ thể]
+[Đạt / Một phần / Chưa đạt]
+[___%]
+3
+[Họ tên]
+[Mô tả nhiệm vụ cụ thể]
+[Đạt / Một phần / Chưa đạt]
+[___%]
+4
+[Họ tên]
+[Mô tả nhiệm vụ cụ thể]
+[Đạt / Một phần / Chưa đạt]
+[___%]
+5
+[Họ tên]
+[Mô tả nhiệm vụ cụ thể]
+[Đạt / Một phần / Chưa đạt]
+[___%]
+Người chủ trì tuần này:
+[Họ và tên thành viên]
+Link commit GitHub tuần này:
+[https://github.com/.../commits/...]
+III. NỘI DUNG ĐÃ THỰC HIỆN
+Chủ đề tuần 04: useState hook, controlled components, event handling, lifting state up, immutable update
+3.1. Danh sách công việc
+Đánh dấu cột Trạng thái: [x] = Xong  |  [~] = Một phần  |  [ ] = Chưa làm
+#
+Công việc cần thực hiện
+T.thái
+Người thực hiện
+1
+Viết SearchBar.jsx: controlled component, bind value={keyword} và onChange
+[ ]
+[Tên SV]
+2
+Thêm validation SearchBar: min 2 ký tự, hiển thị error message, nút Clear
+[ ]
+[Tên SV]
+3
+Thêm state cart[] vào App.jsx, implement handleAddToCart (immutable update)
+[ ]
+[Tên SV]
+4
+Lifting state: truyền handleSearch từ App xuống SearchBar qua props
+[ ]
+[Tên SV]
+5
+Hiển thị totalItems trên Header (truyền qua props từ App)
+[ ]
+[Tên SV]
+6
+Implement filter theo danh mục dùng useState(activeCategory) + derived state
+[ ]
+[Tên SV]
+3.2. Mô tả chi tiết cách triển khai
+Giải thích cách nhóm tiếp cận và thực hiện các công việc chính. Tối thiểu 150 từ.
+[Thành viên phụ trách điền vào đây: mô tả approach đã chọn, lý do chọn, khó khăn gặp phải và cách giải quyết...]
+[...]
+IV. KẾT QUẢ ĐẠT ĐƯỢC
+4.1. Kết quả kỹ thuật đạt được
+Mô tả ngắn từng kết quả đã hoàn thành trong tuần.
+[Kết quả 1: mô tả cụ thể — thêm link file/commit làm dẫn chứng]
+[Kết quả 2: mô tả cụ thể — thêm link file/commit làm dẫn chứng]
+[Kết quả 3: mô tả cụ thể — thêm link file/commit làm dẫn chứng]
+4.2. Screenshot / Demo kết quả
+Chèn ảnh chụp màn hình các tính năng đã hoàn thành (tối thiểu 2 ảnh). Ghi chú bên dưới mỗi ảnh.
+[Chèn Screenshot 1 tại đây]
+Hình 1: [Mô tả ngắn]
+[Chèn Screenshot 2 tại đây]
+Hình 2: [Mô tả ngắn]
+V. CHECKLIST ĐẦU RA — TUẦN 04
+Đánh dấu ☑ vào cột "HT?" cho mỗi đầu ra đã hoàn thành. Ghi rõ file/folder/link lưu kết quả.
+#
+Yêu cầu đầu ra (từ TODO.md)
+HT?
+Vị trí lưu kết quả (file / folder / link)
+Ghi chú
+1
+SearchBar.jsx là controlled component có validation (min 2 ký tự) và nút Clear
+[ ]
+src/components/SearchBar.jsx
+[...]
+2
+Giỏ hàng (cart state) hoạt động: thêm sách, tăng số lượng với immutable update
+[ ]
+src/App.jsx — hàm handleAddToCart dùng spread operator
+[...]
+3
+Header hiển thị đúng số lượng item trong giỏ (lifting state up)
+[ ]
+src/components/Header.jsx nhận cartCount qua props
+[...]
+4
+Báo cáo giải thích tại sao phải dùng setState({...state}) thay vì state.key = value
+[ ]
+docs/week04-immutable.md hoặc phần mô tả trong báo cáo này
+[...]
+TỔNG SỐ ĐẦU RA HOÀN THÀNH
+___/4
+VI. HẠN CHẾ & LỖI GẶP PHẢI
+6.1. Bảng lỗi kỹ thuật
+Liệt kê chi tiết các lỗi đã gặp. Nếu chưa fix được, ghi "Chưa fix" ở cột Trạng thái.
+#
+Mô tả lỗi (copy error message nếu có)
+Nguyên nhân (đoán)
+Cách khắc phục
+T.thái
+1
+[Mô tả lỗi cụ thể]
+[Phân tích nguyên nhân]
+[Bước đã làm để fix]
+[Đã fix / Chưa fix]
+2
+[...]
+[...]
+[...]
+[...]
+3
+[...]
+[...]
+[...]
+[...]
+6.2. Hạn chế về kiến thức & chất lượng
+[Phần lý thuyết tuần này nhóm chưa nắm vững:]
+[Tính năng nào chưa hoàn thiện, UI/UX còn thiếu sót:]
+[Câu hỏi cần hỏi giảng viên trong buổi học tiếp theo:]

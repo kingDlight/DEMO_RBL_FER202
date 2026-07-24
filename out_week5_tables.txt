@@ -1,0 +1,45 @@
+Table 0:
+Tên nhóm | [Điền tên nhóm]
+Mã lớp học phần | [Mã lớp]
+Giảng viên hướng dẫn | [Tên giảng viên]
+Link GitHub Repo | [https://github.com/...]
+Tuần báo cáo | Tuần 05 — React Bootstrap & Tùy biến Giao diện
+Ngày nộp | [dd/mm/yyyy]
+
+Table 1:
+STT | Họ và tên | Nhiệm vụ được giao | Kết quả thực hiện | % HT
+1 | [Họ tên] | [Mô tả nhiệm vụ cụ thể] | [Đạt / Một phần / Chưa đạt] | [___%]
+2 | [Họ tên] | [Mô tả nhiệm vụ cụ thể] | [Đạt / Một phần / Chưa đạt] | [___%]
+3 | [Họ tên] | [Mô tả nhiệm vụ cụ thể] | [Đạt / Một phần / Chưa đạt] | [___%]
+4 | [Họ tên] | [Mô tả nhiệm vụ cụ thể] | [Đạt / Một phần / Chưa đạt] | [___%]
+5 | [Họ tên] | [Mô tả nhiệm vụ cụ thể] | [Đạt / Một phần / Chưa đạt] | [___%]
+
+Table 2:
+Người chủ trì tuần này: | [Họ và tên thành viên]
+Link commit GitHub tuần này: | [https://github.com/.../commits/...]
+
+Table 3:
+# | Công việc cần thực hiện | T.thái | Người thực hiện
+1 | Import bootstrap CSS trong main.jsx, rebuild Header bằng Navbar + Nav + Container | [ ] | [Tên SV]
+2 | Rebuild BookGrid bằng Row/Col với breakpoints xs={2} sm={3} md={4} lg={5} | [ ] | [Tên SV]
+3 | Rebuild BookCard bằng Card, Badge, Button của React-Bootstrap | [ ] | [Tên SV]
+4 | Rebuild SearchBar bằng Form, InputGroup, Button | [ ] | [Tên SV]
+5 | Rebuild Admin table bằng Table striped/bordered, Modal cho form thêm/sửa | [ ] | [Tên SV]
+6 | Test responsive tại 375px (mobile), 768px (tablet), 1280px (desktop) | [ ] | [Tên SV]
+
+Table 4:
+[Chèn Screenshot 1 tại đây] Hình 1: [Mô tả ngắn] | [Chèn Screenshot 2 tại đây] Hình 2: [Mô tả ngắn]
+
+Table 5:
+# | Yêu cầu đầu ra (từ TODO.md) | HT? | Vị trí lưu kết quả (file / folder / link) | Ghi chú
+1 | Toàn bộ giao diện rebuild bằng React-Bootstrap (không dùng inline style cũ) | [ ] | src/components/ — kiểm tra không còn style={} hardcode lớn | [...]
+2 | Responsive OK: không vỡ layout tại 375px, 768px, 1280px | [ ] | Screenshot 3 breakpoints trong DevTools Device Toolbar | [...]
+3 | Báo cáo: danh sách Bootstrap components đã dùng + cách customize (code snippet) | [ ] | docs/week05-bootstrap-report.md hoặc phần mô tả trong báo cáo này | [...]
+ | TỔNG SỐ ĐẦU RA HOÀN THÀNH | ___/3 |  | 
+
+Table 6:
+# | Mô tả lỗi (copy error message nếu có) | Nguyên nhân (đoán) | Cách khắc phục | T.thái
+1 | [Mô tả lỗi cụ thể] | [Phân tích nguyên nhân] | [Bước đã làm để fix] | [Đã fix / Chưa fix]
+2 | [...] | [...] | [...] | [...]
+3 | [...] | [...] | [...] | [...]
+
